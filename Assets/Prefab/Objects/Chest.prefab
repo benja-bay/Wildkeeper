@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 688642950294628524}
   - component: {fileID: 7348951700630964921}
   - component: {fileID: 5674447608346743003}
+  - component: {fileID: 5666764185208166827}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Interactable
@@ -169,3 +170,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5666764185208166827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570859099633080184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3950a57598504347bb6c15133012090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Presiona Click Derecho para interactuar

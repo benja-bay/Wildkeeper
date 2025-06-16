@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3922467377031397510}
   - component: {fileID: 6238047099528872813}
   - component: {fileID: 3649226829732626403}
+  - component: {fileID: 7850557340977408514}
   m_Layer: 0
   m_Name: BerryBush
   m_TagString: Interactable
@@ -173,3 +174,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7850557340977408514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8099010386522153881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3950a57598504347bb6c15133012090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Presiona Click Derecho para interactuar
