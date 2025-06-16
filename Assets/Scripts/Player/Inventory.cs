@@ -28,9 +28,9 @@ namespace Player
 
             Debug.Log($"Now you have {_items[item]}x {item.itemName}");
             
-            if (PlayerData.Instance != null)
+            if (GameManager.Instance != null)
             {
-                PlayerData.Instance.AddItem(item, quantity);
+                GameManager.Instance.AddItem(item, quantity);
             }
         }
 
@@ -42,11 +42,11 @@ namespace Player
 
             _items[item]--;
             
-            if (PlayerData.Instance != null)
+            if (GameManager.Instance != null)
             {
-                if (PlayerData.Instance.inventory.ContainsKey(item))
+                if (GameManager.Instance.inventory.ContainsKey(item))
                 {
-                    PlayerData.Instance.inventory[item] = _items[item];
+                    GameManager.Instance.inventory[item] = _items[item];
                 }
             }
 
