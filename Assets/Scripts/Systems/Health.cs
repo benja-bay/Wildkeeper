@@ -31,18 +31,16 @@ namespace Systems
                 return;
             }
 
+            if (!Alive) return;
+
+            _currentHealth = Mathf.Max(_currentHealth - amount, 0);
+            Debug.Log($"{gameObject.name} recibió {amount} de daño.");
+            Debug.Log($"Salud actual: {_currentHealth}");
+
             if (_currentHealth <= 0)
             {
                 Die();
             }
-
-            if (Alive)
-            {
-                _currentHealth -= amount;
-                Debug.Log($"{gameObject.name} recibió {amount} de daño.");
-            }
-
-            Debug.Log($"Salud actual: {_currentHealth}");
         }
 
         public virtual void Die()

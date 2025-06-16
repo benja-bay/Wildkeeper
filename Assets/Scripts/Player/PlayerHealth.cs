@@ -22,8 +22,23 @@ namespace Player
         [SerializeField] private float healDuration = 0.3f;       // Duration of heal flash
 
         private Color _originalColor; // Original sprite color (restored after flash)
+        
+        // Setup initial color reference
+        private void Start()
+        {
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponent<SpriteRenderer>();
 
+            _originalColor = spriteRenderer.color;
+            // Cargar vida desde GameManager
+            if (GameManager.Instance != null)
+            {
+                _maxHealth = GameManager.Instance.maxHealth;
+                _currentHealth = GameManager.Instance.currentHealth;
+            }
+        }
         // Called when player is healed through an item or effect
+        
         public void Regenerate(int amount)
         {
             Heal(amount);
@@ -43,22 +58,6 @@ namespace Player
             // Guardar salud actual
             if (GameManager.Instance != null)
                 GameManager.Instance.currentHealth = _currentHealth;
-        }
-
-        // Coroutine to flash red briefly when damaged
-        private System.Collections.IEnumerator FlashRed()
-        {
-            spriteRenderer.color = damageColor;
-            yield return new WaitForSeconds(flashDuration);
-            spriteRenderer.color = _originalColor;
-        }
-
-        // Coroutine to flash green briefly when healed
-        private System.Collections.IEnumerator FlashGreen()
-        {
-            spriteRenderer.color = healColor;
-            yield return new WaitForSeconds(healDuration);
-            spriteRenderer.color = _originalColor;
         }
 
         // Called when player health reaches 0
@@ -90,19 +89,20 @@ namespace Player
             );
         }
 
-        // Setup initial color reference
-        private void Start()
-        {
-            if (spriteRenderer == null)
-                spriteRenderer = GetComponent<SpriteRenderer>();
-
-            _originalColor = spriteRenderer.color;
-            // Cargar vida desde GameManager
-            if (GameManager.Instance != null)
-            {
-                _maxHealth = GameManager.Instance.maxHealth;
-                _currentHealth = GameManager.Instance.currentHealth;
-            }
-        }
+         // Coroutine to flash red briefly when damaged
+         private IEnumerator FlashRed()
+         {
+             spriteRenderer.color = damageColor;
+             yield return new WaitForSeconds(flashDuration);
+             spriteRenderer.color = _originalColor;
+         }
+    
+         // Coroutine to flash green briefly when healed
+         private IEnumerator FlashGreen()
+         {
+             spriteRenderer.color = healColor;
+             yield return new WaitForSeconds(healDuration);
+             spriteRenderer.color = _originalColor;
+         }
     }
 }
