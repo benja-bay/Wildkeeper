@@ -14,7 +14,10 @@ namespace Objects
         [Tooltip("Sprite displayed when the chest has already been used")]
         [SerializeField] private Sprite usedSprite;
 
-        private bool _hasBeenUsed = false; // Ensures the chest is only opened once
+        [Header("ID")]
+        [Tooltip("Unique object ID")]
+        [SerializeField] private string objectID;
+        
         private SpriteRenderer _spriteRenderer; // Reference to the SpriteRenderer
 
         [System.Serializable]
@@ -34,12 +37,19 @@ namespace Objects
             {
                 Debug.LogError("ChestObject: No SpriteRenderer found on this object.");
             }
+            
+            if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
+            {
+                if (usedSprite != null && _spriteRenderer != null)
+                    _spriteRenderer.sprite = usedSprite;
+            }
+            
         }
 
         public void Interact(Player.Player player)
         {
             // === Prevent chest from being used multiple times ===
-            if (_hasBeenUsed)
+            if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
             {
                 Debug.Log("There are no more items here.");
                 return;
@@ -60,8 +70,8 @@ namespace Objects
                 Debug.Log($"Added {chestItem.quantity}x {chestItem.item.itemName}");
             }
 
-            _hasBeenUsed = true;
-
+            GameManager.Instance.MarkObjectAsUsed(objectID);
+            
             // === Update chest appearance to indicate it has been used ===
             if (usedSprite != null && _spriteRenderer != null)
             {

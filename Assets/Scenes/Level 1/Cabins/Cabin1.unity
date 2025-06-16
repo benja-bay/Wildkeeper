@@ -1384,6 +1384,87 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &820369058
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2793667532092662848, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: objectID
+      value: med1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2793667532092662848, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: healPercentage
+      value: 0.238
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923728871115271215, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_Name
+      value: MedicKit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5903931
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.897749
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664767494826798811, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
 --- !u!1 &973284449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,3 +2314,4 @@ SceneRoots:
   - {fileID: 1852877573}
   - {fileID: 1819739733}
   - {fileID: 299761845}
+  - {fileID: 820369058}

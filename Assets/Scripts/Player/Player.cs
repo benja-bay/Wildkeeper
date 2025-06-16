@@ -81,9 +81,9 @@ namespace Player
             // Set initial player state to idle
             _stateMachine.Initialize(IdleState);
             
-            if (PlayerData.Instance != null)
+            if (GameManager.Instance != null)
             {
-                var itemsToLoad = new Dictionary<ItemSO, int>(PlayerData.Instance.inventory); // Copia segura
+                var itemsToLoad = new Dictionary<ItemSO, int>(GameManager.Instance.inventory); // Copia segura
 
                 foreach (var item in itemsToLoad)
                 {

@@ -13,8 +13,10 @@ namespace Objects
         [Header("Animator")]
         [Tooltip("Animator controlling the bush's animations")]
         [SerializeField] private Animator animator;
-
-        private bool _hasBeenUsed = false; // Ensures the bush can only be collected once
+        
+        [Header("ID")]
+        [Tooltip("Unique object ID")]
+        [SerializeField] private string objectID;
 
         [System.Serializable]
         public struct BushItem
@@ -37,12 +39,20 @@ namespace Objects
                     Debug.LogError("BerryBushObject: No Animator found on this object.");
                 }
             }
+            
+            if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
+            {
+                if (animator != null)
+                {
+                    animator.SetTrigger("Used");
+                }
+            }
         }
 
         public void Interact(Player.Player player)
         {
             // === Prevent bush from being used more than once ===
-            if (_hasBeenUsed)
+            if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
             {
                 Debug.Log("This bush has already been harvested.");
                 return;
@@ -64,7 +74,7 @@ namespace Objects
                 Debug.Log($"Collected {amount}x {bushItem.item.itemName}");
             }
 
-            _hasBeenUsed = true;
+            GameManager.Instance.MarkObjectAsUsed(objectID);
 
             // === Play used animation if available ===
             if (animator != null)

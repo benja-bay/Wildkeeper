@@ -12,13 +12,16 @@ namespace Objects
     {
         [Tooltip("Percentage of max health to restore (between 0 and 1)")]
         [Range(0f, 1f)]
-        [SerializeField] private float healPercentage = 0.3f;
+        [SerializeField] private float healPercentage;
 
         [Header("Visuals")]
         [Tooltip("Sprite displayed when the object has already been used")]
         [SerializeField] private Sprite usedSprite;
 
-        private bool _hasBeenUsed = false; // Ensures the object can only be used once
+        [Header("ID")]
+        [Tooltip("Unique object ID")]
+        [SerializeField] private string objectID;
+        
         private SpriteRenderer _spriteRenderer; // Reference to the current SpriteRenderer
 
         private void Awake()
@@ -29,12 +32,19 @@ namespace Objects
             {
                 Debug.LogError("HealingObject: No SpriteRenderer found on this object.");
             }
+            
+            if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
+            {
+                if (usedSprite != null)
+                {
+                    _spriteRenderer.sprite = usedSprite;
+                }
+            }
         }
 
         public void Interact(Player.Player player)
         {
-            // === Prevent multiple uses of the healing object ===
-            if (_hasBeenUsed)
+            if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
             {
                 Debug.Log("This healing object has already been used.");
                 return;
@@ -62,7 +72,7 @@ namespace Objects
             health.Regenerate(healAmount);
             Debug.Log($"Player healed for {healAmount} HP ({healPercentage * 100}% of max health).");
 
-            _hasBeenUsed = true;
+            GameManager.Instance.MarkObjectAsUsed(objectID);
 
             // === Update visual to indicate object has been used ===
             if (usedSprite != null && _spriteRenderer != null)
