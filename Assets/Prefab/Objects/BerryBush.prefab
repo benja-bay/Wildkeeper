@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2160509541987035340}
+  - component: {fileID: 3892924592578808358}
   - component: {fileID: 3922467377031397510}
-  - component: {fileID: 3649226829732626403}
   - component: {fileID: 6238047099528872813}
-  - component: {fileID: 4964091005956765600}
+  - component: {fileID: 3649226829732626403}
   m_Layer: 0
   m_Name: BerryBush
   m_TagString: Interactable
@@ -29,12 +29,32 @@ Transform:
   m_GameObject: {fileID: 8099010386522153881}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.37, y: -0.61, z: 0}
+  m_LocalPosition: {x: -8.99, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3892924592578808358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8099010386522153881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af5b9c8aee3b9a4abcfd84e5609d999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: bush_01
+  animator: {fileID: 0}
+  quantityMode: 1
+  items:
+  - item: {fileID: 11400000, guid: 607b98decb80bd34783b25a9892c61d9, type: 2}
+    fixedQuantity: 0
+    minRandom: 1
+    maxRandom: 5
 --- !u!212 &3922467377031397510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,27 +107,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3649226829732626403
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8099010386522153881}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 583d9ed7d72550d4cab686f83a21690a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &6238047099528872813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,16 +152,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &4964091005956765600
-MonoBehaviour:
+--- !u!95 &3649226829732626403
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8099010386522153881}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836e2d029a2fbed44944c6daa927ee7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 583d9ed7d72550d4cab686f83a21690a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
