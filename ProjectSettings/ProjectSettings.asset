@@ -44,8 +44,6 @@ PlayerSettings:
     duration: 2
   - logo: {fileID: 21300000, guid: f992ec7a6edecb04cadf55974a0dd58b, type: 3}
     duration: 2.53
-  - logo: {fileID: 2132144916, guid: e67ef5d9874556e40a9075f1ac453a73, type: 3}
-    duration: 2
   - logo: {fileID: 21300000, guid: 91098fe651455b048921508d6f3b0b49, type: 3}
     duration: 4
   m_VirtualRealitySplashScreen: {fileID: 0}
@@ -147,7 +145,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.1
+  bundleVersion: 1.1.2
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -295,7 +293,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a206ff0ddc681e642a2e62fc57a7d51c, type: 3}
+      m_Icon: {fileID: 2800000, guid: 5b59c6921e16ed043ac5fe4ad21f33bf, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

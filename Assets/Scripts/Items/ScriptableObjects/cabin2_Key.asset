@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cbe5bbe0c170374db917c00f8075d0b, type: 3}
-  m_Name: deposit_Key
+  m_Name: cabin2_Key
   m_EditorClassIdentifier: 
-  itemName: First Cabin Key
+  itemName: cabin2 Key
   icon: {fileID: 0}
   description: "Llave para abrir la caba\xF1a 2"
   effectType: 4
   value: 0
   maxAmount: 1
-  keyID: deposit_key
+  keyID: cabin2_key

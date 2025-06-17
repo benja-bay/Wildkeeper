@@ -30,18 +30,16 @@ public class DoorObject : MonoBehaviour, IInteractable
 
     public void Interact(Player.Player player)
     {
-        if (requiresKey && requiredKey != null)
+        if (requiresKey)
         {
-            if (player.Inventory.GetItemCount(requiredKey) <= 0)
-            {
-                Debug.Log("La puerta está cerrada. Necesitas la llave correcta.");
-                return;
-            }
-        }
-        
-        if (requiresKey && !string.IsNullOrEmpty(keyID))
-        {
-            if (!player.Inventory.HasKey(keyID))
+            bool hasKey = false;
+
+            if (requiredKey != null)
+                hasKey = player.Inventory.GetItemCount(requiredKey) > 0;
+            else if (!string.IsNullOrEmpty(keyID))
+                hasKey = player.Inventory.HasKey(keyID);
+
+            if (!hasKey)
             {
                 Debug.Log("La puerta está cerrada. Necesitas la llave correcta.");
                 return;
