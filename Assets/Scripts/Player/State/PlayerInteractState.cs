@@ -34,8 +34,7 @@ namespace Player.State
             _interactionHitbox.UpdatePositionAndRotation();
 
             Debug.Log("Interaction hitbox activated");
-
-            Player.Move(Vector2.zero); // Stop movement during interaction
+            
             _meleeHitbox.SetActive(true); // Activate hitbox GameObject
 
             _interactionTimer = _interactionDuration;
