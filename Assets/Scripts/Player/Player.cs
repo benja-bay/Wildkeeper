@@ -78,16 +78,17 @@ namespace Player
 
         void Start()
         {
-            // Set initial player state to idle
             _stateMachine.Initialize(IdleState);
-            
+
             if (GameManager.Instance != null)
             {
-                var itemsToLoad = new Dictionary<ItemSO, int>(GameManager.Instance.inventory); // Copia segura
+                Inventory.Clear();
+
+                var itemsToLoad = new Dictionary<ItemSO, int>(GameManager.Instance.inventory);
 
                 foreach (var item in itemsToLoad)
                 {
-                    Inventory.AddItem(item.Key, item.Value);
+                    Inventory.AddItem(item.Key, item.Value, false);
                 }
             }
         }

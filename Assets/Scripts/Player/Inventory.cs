@@ -15,7 +15,7 @@ namespace Player
         public Dictionary<ItemSO, int> _items = new(); // Stores each item and its quantity
 
         // Adds item to inventory, capping at its max allowed amount
-        public void AddItem(ItemSO item, int quantity = 1)
+        public void AddItem(ItemSO item, int quantity = 1, bool syncWithGameManager = true)
         {
             if (_items.ContainsKey(item))
             {
@@ -27,8 +27,8 @@ namespace Player
             }
 
             Debug.Log($"Now you have {_items[item]}x {item.itemName}");
-            
-            if (GameManager.Instance != null)
+
+            if (syncWithGameManager && GameManager.Instance != null)
             {
                 GameManager.Instance.AddItem(item, quantity);
             }
@@ -115,6 +115,11 @@ namespace Player
                 }
             }
             return false;
+        }
+        
+        public void Clear()
+        {
+            _items.Clear();
         }
         
     }
