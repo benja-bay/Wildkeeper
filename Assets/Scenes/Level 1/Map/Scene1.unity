@@ -274,7 +274,7 @@ MonoBehaviour:
   spawnData: {fileID: 11400000, guid: 6eb2abd7148bbd544b0eeea623d8ed93, type: 2}
   selectedSpawnIndex: 0
   targetScene: Cabin2
-  requiresKey: 0
+  requiresKey: 1
   requiredKey: {fileID: 11400000, guid: 94883b0cac28cf04684eb48bab8514ce, type: 2}
   keyID: 11
   sceneAsset: {fileID: 102900000, guid: 9eec77f0792938646a7e1278069117b4, type: 3}

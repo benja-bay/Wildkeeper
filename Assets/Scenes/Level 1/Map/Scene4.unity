@@ -112989,6 +112989,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 102900000, guid: e4273e33e372b8247bcac9f33e182729, type: 3}
     - target: {fileID: 8710145971889519841, guid: 3382dca643fd22949a6b39e62863eaf9, type: 3}
+      propertyPath: requiredKey
+      value: 
+      objectReference: {fileID: 11400000, guid: 9478f2b56edac554eba7adc788024339, type: 2}
+    - target: {fileID: 8710145971889519841, guid: 3382dca643fd22949a6b39e62863eaf9, type: 3}
+      propertyPath: requiresKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710145971889519841, guid: 3382dca643fd22949a6b39e62863eaf9, type: 3}
       propertyPath: targetScene
       value: Cabin4
       objectReference: {fileID: 0}
