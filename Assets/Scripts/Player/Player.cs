@@ -45,6 +45,7 @@ namespace Player
         
         [Header("HUD References")]
         [SerializeField] private GameObject meleeIconHUD;
+        [SerializeField] private GameObject rangedIconHUD;
 
         // === State Instances ===
         [HideInInspector] public PlayerIdleState IdleState;
@@ -165,6 +166,10 @@ namespace Player
             {
                 RangedAttackState.Unlock();
                 Debug.Log("Ranged attack unlocked.");
+                if (rangedIconHUD != null)
+                {
+                    rangedIconHUD.SetActive(true);
+                }
             }
 
             // Update current state logic and input
