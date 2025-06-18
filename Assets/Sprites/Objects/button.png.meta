@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1593d07dbc2880a4caf56fd41394e653
+guid: 83d4b3efdb6a7ac45a63b0d2e3efa9ed
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,127 +97,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss front hit_0
+      name: button_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 8
-        width: 121
-        height: 131
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ca986f166b1aa04dacba833340d6352
-      internalID: 1369216092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss front hit_1
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 14
-        width: 121
-        height: 137
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a61f8b7283d90b45bfe8d8e7d6f95e5
-      internalID: 716139164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss front hit_2
-      rect:
-        serializedVersion: 2
-        x: 345
-        y: 14
-        width: 121
-        height: 162
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37753156b2008bf4f9d866503488feeb
-      internalID: -79436940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss front hit_3
-      rect:
-        serializedVersion: 2
-        x: 506
-        y: 14
-        width: 121
-        height: 165
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83a7848caafaa414e83b7dc5f835b011
-      internalID: -117673221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss front hit_4
-      rect:
-        serializedVersion: 2
-        x: 644
+        x: 0
         y: 0
-        width: 160
-        height: 163
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ef943892cd724a43abee6f3d2774f5d
-      internalID: -997766715
+      spriteID: 6fcbb7c8245d0e74489c9b6d207d3abd
+      internalID: 1886897642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss front hit_5
+      name: button_1
       rect:
         serializedVersion: 2
-        x: 828
-        y: 8
-        width: 121
-        height: 137
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        x: 31
+        y: 0
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 276d65adbc989ce44b9bc03244614f2c
-      internalID: -85856479
+      spriteID: 72ede7d0ee95cba41a3bb7b4d9e7d251
+      internalID: 1372143469
       vertices: []
       indices: 
       edges: []
@@ -233,12 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boss front hit_0: 1369216092
-      Boss front hit_1: 716139164
-      Boss front hit_2: -79436940
-      Boss front hit_3: -117673221
-      Boss front hit_4: -997766715
-      Boss front hit_5: -85856479
+      button_0: 1886897642
+      button_1: 1372143469
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

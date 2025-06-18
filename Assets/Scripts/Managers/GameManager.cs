@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
     public Dictionary<ItemSO, int> inventory = new();
+    private Dictionary<string, bool> remoteObjectStates = new();
     
     private void Awake()
     {
@@ -53,5 +54,15 @@ public class GameManager : MonoBehaviour
                 return true;
         }
         return false;
+    }
+    
+    public void SetRemoteObjectState(string objectID, bool active)
+    {
+        remoteObjectStates[objectID] = active;
+    }
+
+    public bool? GetRemoteObjectState(string objectID)
+    {
+        return remoteObjectStates.ContainsKey(objectID) ? remoteObjectStates[objectID] : null;
     }
 }
