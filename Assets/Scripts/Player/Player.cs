@@ -42,6 +42,9 @@ namespace Player
         [Header("Unlock Items")]
         [SerializeField] private ItemSO meleeUnlockItem; // Item that unlocks melee attack
         [SerializeField] private ItemSO rangedUnlockItem; // Item that unlocks ranged attack
+        
+        [Header("HUD References")]
+        [SerializeField] private GameObject meleeIconHUD;
 
         // === State Instances ===
         [HideInInspector] public PlayerIdleState IdleState;
@@ -151,6 +154,10 @@ namespace Player
             {
                 MeleAttackState.Unlock();
                 Debug.Log("Melee attack unlocked.");
+                if (meleeIconHUD != null)
+                {
+                    meleeIconHUD.SetActive(true);
+                }
             }
 
             // Automatically unlock ranged attack if player owns the required item

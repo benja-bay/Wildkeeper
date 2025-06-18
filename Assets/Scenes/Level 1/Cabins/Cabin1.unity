@@ -1599,6 +1599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6957870320448934737, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
+      propertyPath: meleeIconHUD
+      value: 
+      objectReference: {fileID: 1422967994}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1716,6 +1720,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
+--- !u!1 &1422967994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4935781886512617478, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
+  m_PrefabInstance: {fileID: 1422967993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1697823888
 GameObject:
   m_ObjectHideFlags: 0
