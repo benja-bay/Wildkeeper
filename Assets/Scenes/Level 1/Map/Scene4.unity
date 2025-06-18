@@ -113020,13 +113020,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1242602181}
   - component: {fileID: 1242602182}
+  - component: {fileID: 1242602183}
+  - component: {fileID: 1242602184}
   m_Layer: 0
   m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1242602181
 Transform:
   m_ObjectHideFlags: 0
@@ -113094,6 +113096,130 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1242602183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242602180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3992e31758f44a62904ea84daef7e968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: cave_door
+--- !u!60 &1242602184
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242602180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 31.25, y: 17.875}
+    newSize: {x: 31.25, y: 17.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 5.8125, y: -8.125}
+      - {x: 6.5625, y: -8.1875}
+      - {x: 7.25, y: -8.1875}
+      - {x: 8.3125, y: -8.125}
+      - {x: 9.6875, y: -7.6875}
+      - {x: 11.5625, y: -7.4375}
+      - {x: 12.25, y: -7.3125}
+      - {x: 13.6875, y: -6.875}
+      - {x: 14.6875, y: -6.0625}
+      - {x: 14.75, y: -4.75}
+      - {x: 14.75, y: -3.625}
+      - {x: 14.625, y: -2.6875}
+      - {x: 14.625, y: -1.75}
+      - {x: 14.6875, y: -0.75}
+      - {x: 14.5625, y: 0.0625}
+      - {x: 13.9375, y: 2}
+      - {x: 13.25, y: 2.875}
+      - {x: 12.125, y: 4.3125}
+      - {x: 10.75, y: 5.875}
+      - {x: 9.875, y: 6.25}
+      - {x: 8.5625, y: 7.0625}
+      - {x: 7.375, y: 7.5}
+      - {x: 5.6875, y: 7.8125}
+      - {x: 4.6875, y: 8.1875}
+      - {x: 1.0625, y: 8.1875}
+      - {x: 0.4375, y: 7.9375}
+      - {x: -0.4375, y: 7.875}
+      - {x: -0.8125, y: 7.875}
+      - {x: -2.875, y: 7.8125}
+      - {x: -4.0625, y: 7.625}
+      - {x: -5.75, y: 7.4375}
+      - {x: -6.6875, y: 7.3125}
+      - {x: -7.4375, y: 7.3125}
+      - {x: -8.1875, y: 7}
+      - {x: -8.875, y: 6.5625}
+      - {x: -9.5625, y: 6.1875}
+      - {x: -10.1875, y: 6.0625}
+      - {x: -10.6875, y: 5.6875}
+      - {x: -11.875, y: 4.5}
+      - {x: -12.375, y: 3.6875}
+      - {x: -13.9375, y: 2}
+      - {x: -14.3125, y: 1}
+      - {x: -14.6875, y: 0.3125}
+      - {x: -15.125, y: -0.4375}
+      - {x: -15.1875, y: -1.25}
+      - {x: -15.125, y: -2.6875}
+      - {x: -15.25, y: -3.6875}
+      - {x: -15.25, y: -5.375}
+      - {x: -15.0625, y: -5.875}
+      - {x: -13.75, y: -6.75}
+      - {x: -13.375, y: -6.6875}
+      - {x: -11.5, y: -7.0625}
+      - {x: -10.625, y: -7.5}
+      - {x: -10.1875, y: -7.625}
+      - {x: -9.1875, y: -7.5625}
+      - {x: -8.6875, y: -7.75}
+      - {x: -7.4375, y: -7.9375}
+      - {x: -6.5625, y: -8.1875}
+      - {x: -4.9375, y: -8.25}
+      - {x: -3.5625, y: -8.5}
+      - {x: -2.6875, y: -8.4375}
+      - {x: -1.1875, y: -8.375}
+      - {x: 0.0625, y: -8.625}
+      - {x: 1.125, y: -8.625}
+      - {x: 1.5625, y: -8.375}
+      - {x: 4.3125, y: -8.375}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1283535144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113117,6 +113243,10 @@ PrefabInstance:
     - target: {fileID: 4511971168175405730, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
       propertyPath: m_Name
       value: SceneTransition_Cave
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511971168175405730, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5617219896907721859, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
       propertyPath: m_LocalPosition.x
