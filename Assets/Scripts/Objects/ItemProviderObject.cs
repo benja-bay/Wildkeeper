@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using HUD;
 using UnityEngine;
 using Items;
 
@@ -64,7 +66,30 @@ namespace Objects
                 };
 
                 inventory.AddItem(entry.item, amount);
+                
                 Debug.Log($"Entregado {amount}x {entry.item.itemName}");
+            }
+            
+            List<string> itemMessages = new();
+
+            foreach (var entry in items)
+            {
+                int amount = quantityMode switch
+                {
+                    QuantityMode.Fixed => entry.fixedQuantity,
+                    QuantityMode.Random => Random.Range(entry.minRandom, entry.maxRandom + 1),
+                    _ => 0
+                };
+
+                inventory.AddItem(entry.item, amount);
+                itemMessages.Add($"{amount}x {entry.item.itemName}");
+            }
+
+            // Mostrar mensaje en el HUD
+            if (itemMessages.Count > 0)
+            {
+                string fullMessage = "Obtuviste: " + string.Join(", ", itemMessages);
+                InteractionUIManager.Instance?.ShowPromptTemporary(fullMessage, 2f);
             }
 
             GameManager.Instance.MarkObjectAsUsed(objectID);
