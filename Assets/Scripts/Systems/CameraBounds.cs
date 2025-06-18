@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class CameraBounds : MonoBehaviour
 {
     private BoxCollider2D boundsCollider;
