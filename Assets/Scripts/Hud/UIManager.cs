@@ -30,5 +30,12 @@ namespace HUD
         {
             promptPanel.SetActive(false);
         }
+        
+        public void ShowPromptTemporary(string message, float duration)
+        {
+            ShowPrompt(message);
+            CancelInvoke(nameof(HidePrompt));
+            Invoke(nameof(HidePrompt), duration);
+        }
     }
 }

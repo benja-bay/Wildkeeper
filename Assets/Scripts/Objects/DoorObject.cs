@@ -1,3 +1,4 @@
+using HUD;
 using UnityEngine;
 using Objects;
 using Items;
@@ -41,7 +42,7 @@ public class DoorObject : MonoBehaviour, IInteractable
 
             if (!hasKey)
             {
-                Debug.Log("La puerta está cerrada. Necesitas la llave correcta.");
+                InteractionUIManager.Instance?.ShowPromptTemporary("La puerta está cerrada. Necesitas una llave.", 2f);
                 return;
             }
         }
