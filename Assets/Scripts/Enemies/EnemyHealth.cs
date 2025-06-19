@@ -13,6 +13,12 @@ namespace Enemies
     {
         [Header("Death Effect")]
         [SerializeField] private GameObject deathEffectPrefab;
+        private EnemyController controller;
+        
+        private void Awake()
+        {
+            controller = GetComponent<EnemyController>();
+        }
         
         // Este método se llama cuando el enemigo recibe daño
         public override void TakeDamage(int amount)
@@ -36,6 +42,11 @@ namespace Enemies
             if (deathEffectPrefab != null)
             {
                 Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            }
+
+            if (controller != null && controller.isBoss)
+            {
+                GameManager.Instance?.NotifyBossDeath();
             }
 
             Destroy(gameObject);

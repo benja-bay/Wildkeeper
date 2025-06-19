@@ -41,6 +41,9 @@ namespace Enemies
         private IEnemyState VisionState;
         private IEnemyState AtackState;
         private EnemyStateFactory _stateFactory; // Fábrica para crear estados
+        
+        [Header("Boss Settings")]
+        public bool isBoss = false;
 
         // Variables de ataque tipo "charge"
         public float ChargeSpeed { get; private set; }

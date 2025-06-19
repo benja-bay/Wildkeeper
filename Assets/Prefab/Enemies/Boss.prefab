@@ -162,6 +162,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
   ProjectileSpeed: 0
   MeleeHitbox: {fileID: 4181015597414325636}
+  isBoss: 1
 --- !u!195 &8276019731614309371
 NavMeshAgent:
   m_ObjectHideFlags: 0

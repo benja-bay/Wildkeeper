@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
     {
         remoteObjectStates[objectID] = active;
     }
+    
+    public void NotifyBossDeath()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+    }
 
     public bool? GetRemoteObjectState(string objectID)
     {
