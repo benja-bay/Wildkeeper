@@ -4,12 +4,16 @@
 // ==============================
 
 using Systems;
+using UnityEngine;
 
 namespace Enemies
 {
     // Esta clase gestiona la salud del enemigo y extiende la funcionalidad de una clase base llamada Health
     public class EnemyHealth : Health
     {
+        [Header("Death Effect")]
+        [SerializeField] private GameObject deathEffectPrefab;
+        
         // Este método se llama cuando el enemigo recibe daño
         public override void TakeDamage(int amount)
         {
@@ -27,8 +31,14 @@ namespace Enemies
         // Este método se ejecuta cuando la salud llega a 0
         public override void Die()
         {
-            base.Die(); // Ejecuta cualquier lógica de muerte definida en la clase base
-            Destroy(gameObject); // Elimina al enemigo de la escena
+            base.Die();
+
+            if (deathEffectPrefab != null)
+            {
+                Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
         }
     }
 }

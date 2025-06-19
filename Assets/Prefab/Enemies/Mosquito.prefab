@@ -271,6 +271,7 @@ MonoBehaviour:
   flashDuration: 0.1
   healColor: {r: 0, g: 1, b: 0, a: 1}
   healDuration: 0.3
+  deathEffectPrefab: {fileID: 7103163651432898139, guid: 03d4a28a53577fc42ab6bbfe1455d9e7, type: 3}
 --- !u!114 &7538747161642156049
 MonoBehaviour:
   m_ObjectHideFlags: 0
