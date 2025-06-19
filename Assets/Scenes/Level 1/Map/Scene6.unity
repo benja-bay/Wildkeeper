@@ -106813,19 +106813,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162451286674079796, guid: ddc575e6ffdb3aa408762e1c18fa5600, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.77
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 162451286674079796, guid: ddc575e6ffdb3aa408762e1c18fa5600, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.76
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 260650828629072067, guid: ddc575e6ffdb3aa408762e1c18fa5600, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.757935
+      value: 49.14
       objectReference: {fileID: 0}
     - target: {fileID: 260650828629072067, guid: ddc575e6ffdb3aa408762e1c18fa5600, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.461132
+      value: 24.38
       objectReference: {fileID: 0}
     - target: {fileID: 260650828629072067, guid: ddc575e6ffdb3aa408762e1c18fa5600, type: 3}
       propertyPath: m_LocalPosition.z
