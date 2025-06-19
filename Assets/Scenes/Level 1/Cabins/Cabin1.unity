@@ -1101,6 +1101,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33c6126c235fe7749840f30b654bbea4, type: 3}
+--- !u!20 &609598808 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2305394163269790184, guid: 33c6126c235fe7749840f30b654bbea4, type: 3}
+  m_PrefabInstance: {fileID: 609598807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &778186310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,8 +1360,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6923728871115271215, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 820369060}
   m_SourcePrefab: {fileID: 100100000, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+--- !u!1 &820369059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6923728871115271215, guid: dfa4cc621485dc3448244ac70bada1df, type: 3}
+  m_PrefabInstance: {fileID: 820369058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &820369060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820369059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3950a57598504347bb6c15133012090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Presiona Click Derecho para curarte
 --- !u!1 &973284449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1722,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4818154827132350579, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 609598808}
     - target: {fileID: 5655322108261420855, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1956,79 +1986,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1700375147
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.74259
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.343041
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446381468648812049, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: objectID
-      value: cabin1_chest_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: items.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: items.Array.data[0].item
-      value: 
-      objectReference: {fileID: 11400000, guid: 94883b0cac28cf04684eb48bab8514ce, type: 2}
-    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: items.Array.data[0].fixedQuantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5570859099633080184, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
-      propertyPath: m_Name
-      value: Chest
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
 --- !u!1 &1755828782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,8 +2257,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1064943409383340985, guid: 2adc08ba940f52f4a991543531307838, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 5216484276447747111}
   m_SourcePrefab: {fileID: 100100000, guid: 2adc08ba940f52f4a991543531307838, type: 3}
+--- !u!1 &5216484276447747110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1064943409383340985, guid: 2adc08ba940f52f4a991543531307838, type: 3}
+  m_PrefabInstance: {fileID: 5216484276447747109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5216484276447747111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216484276447747110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3950a57598504347bb6c15133012090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Presiona Click Derecho para recoger la llave
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2315,5 +2293,4 @@ SceneRoots:
   - {fileID: 1819739733}
   - {fileID: 299761845}
   - {fileID: 820369058}
-  - {fileID: 1700375147}
   - {fileID: 5216484276447747109}

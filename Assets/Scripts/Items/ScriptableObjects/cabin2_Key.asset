@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbe5bbe0c170374db917c00f8075d0b, type: 3}
   m_Name: cabin2_Key
   m_EditorClassIdentifier: 
-  itemName: cabin2 Key
+  itemName: Llave de Cabina 2
   icon: {fileID: 0}
   description: "Llave para abrir la caba\xF1a 2"
   effectType: 4
