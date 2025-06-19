@@ -266,6 +266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  spriteRenderer: {fileID: 8353593343535548918}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
+  healColor: {r: 0, g: 1, b: 0, a: 1}
+  healDuration: 0.3
 --- !u!114 &7538747161642156049
 MonoBehaviour:
   m_ObjectHideFlags: 0

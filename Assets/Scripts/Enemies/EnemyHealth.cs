@@ -14,6 +14,7 @@ namespace Enemies
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount); // Aplica el daño usando la lógica de la clase base
+            FlashDamage();
 
             // Informa al EnemyController que revise si debe cambiar su comportamiento
             EnemyController controller = GetComponent<EnemyController>();
