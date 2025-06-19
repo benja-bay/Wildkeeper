@@ -96,6 +96,12 @@ namespace Player
                 return false;
 
             _items[ammoItem]--;
+
+            if (GameManager.Instance != null && GameManager.Instance.inventory.ContainsKey(ammoItem))
+            {
+                GameManager.Instance.inventory[ammoItem] = _items[ammoItem];
+            }
+
             return true;
         }
 
