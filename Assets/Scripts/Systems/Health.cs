@@ -13,6 +13,15 @@ namespace Systems
         [SerializeField] protected int _maxHealth = 100;
         protected int _currentHealth;
         protected bool Alive = true;
+        
+        [Header("Feedback visual (opcional)")]
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Color damageColor = Color.red;
+        [SerializeField] private float flashDuration = 0.1f;
+        [SerializeField] private Color healColor = Color.green;
+        [SerializeField] private float healDuration = 0.3f;
+        
+        private Color _originalColor;
 
         // === Health Properties ===
         public int CurrentHealth => _currentHealth;
@@ -21,6 +30,12 @@ namespace Systems
         public void Awake()
         {
             _currentHealth = _maxHealth;
+        }
+        
+        protected virtual void Start()
+        {
+            if (spriteRenderer != null)
+                _originalColor = spriteRenderer.color;
         }
 
         public virtual void TakeDamage(int amount)
@@ -41,6 +56,25 @@ namespace Systems
             {
                 Die();
             }
+        }
+        
+        protected void FlashDamage()
+        {
+            if (spriteRenderer != null)
+                StartCoroutine(FlashColor(damageColor, flashDuration));
+        }
+
+        protected void FlashHeal()
+        {
+            if (spriteRenderer != null)
+                StartCoroutine(FlashColor(healColor, healDuration));
+        }
+
+        private System.Collections.IEnumerator FlashColor(Color color, float duration)
+        {
+            spriteRenderer.color = color;
+            yield return new WaitForSeconds(duration);
+            spriteRenderer.color = _originalColor;
         }
 
         public virtual void Die()
