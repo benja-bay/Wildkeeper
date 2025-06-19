@@ -188,5 +188,10 @@ namespace Player
             // Move the player using Rigidbody2D
             rb2D.velocity = direction * moveSpeed;
         }
+        
+        public void ChangeToIdleState()
+        {
+            _stateMachine.ChangeState(IdleState);
+        }
     }
 }
