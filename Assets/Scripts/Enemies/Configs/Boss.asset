@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   _name: Boss
-  _health: 200
-  _speed: 4
-  _damage: 30
-  _attackCooldown: 0.5
+  _health: 800
+  _speed: 2
+  _damage: 40
+  _attackCooldown: 4
   _attackDistance: 3
   _attackType: 00000000
   _startState: 0000000000000000
   _onVisionState: 0200000002000000
   _prefab: {fileID: 730200238648992963, guid: 7155f72aa30edca4b80b94e1c014cd18, type: 3}
   _behaviorSwitchHealthPercent: 50
-  _visionDistance: 7.51
+  _visionDistance: 8
   _patrolWaitTime: 2
   _projectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
   _projectileSpeed: 5

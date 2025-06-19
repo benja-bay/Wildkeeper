@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Yarara
   m_EditorClassIdentifier: 
   _name: Yarara
-  _health: 100
-  _speed: 3
+  _health: 60
+  _speed: 4
   _damage: 10
-  _attackCooldown: 2
-  _attackDistance: 2
+  _attackCooldown: 1.5
+  _attackDistance: 3
   _attackType: 00000000
   _startState: 01000000
   _onVisionState: 02000000

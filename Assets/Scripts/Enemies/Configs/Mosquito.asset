@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Mosquito
   m_EditorClassIdentifier: 
   _name: Mosquito
-  _health: 100
-  _speed: 2
-  _damage: 1
+  _health: 40
+  _speed: 3
+  _damage: 20
   _attackCooldown: 0.5
-  _attackDistance: 8
+  _attackDistance: 7
   _attackType: 01000000
   _startState: 01000000
   _onVisionState: 03000000
