@@ -110,7 +110,7 @@ namespace Player
 
             // Ensure weapon is hidden if ranged mode isn't usable
             if (inputHandler.CurrentAttackMode == AttackMode.KRanged
-                && (!RangedAttackState.IsUnlocked))
+                && (!RangedAttackState.IsUnlocked || !Inventory.HasAmmo(DartItem)))
             {
                 _weaponObject.SetActive(false);
             }
