@@ -344,8 +344,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8099010386522153881, guid: a5ba3b753b175644fadd5ccd709ca302, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 367373614}
   m_SourcePrefab: {fileID: 100100000, guid: a5ba3b753b175644fadd5ccd709ca302, type: 3}
+--- !u!1 &367373613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8099010386522153881, guid: a5ba3b753b175644fadd5ccd709ca302, type: 3}
+  m_PrefabInstance: {fileID: 367373612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &367373614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367373613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3950a57598504347bb6c15133012090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Presiona Click Derecho para recoger bayas
 --- !u!1001 &472755952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43744,6 +43765,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4511971168175405730, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2146967931}
+    - targetCorrespondingSourceObject: {fileID: 4511971168175405730, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2146967933}
   m_SourcePrefab: {fileID: 100100000, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
 --- !u!4 &1685563480 stripped
 Transform:
@@ -44779,6 +44803,19 @@ MonoBehaviour:
   requiredKey: {fileID: 11400000, guid: 94883b0cac28cf04684eb48bab8514ce, type: 2}
   keyID: 11
   sceneAsset: {fileID: 102900000, guid: 55e1761522daf3a45a573d722c00260e, type: 3}
+--- !u!114 &2146967933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146967928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3950a57598504347bb6c15133012090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Presiona Click Derecho para entrar
 --- !u!1001 &1095267714902486244
 PrefabInstance:
   m_ObjectHideFlags: 0
