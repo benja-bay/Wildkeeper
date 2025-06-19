@@ -541,6 +541,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1618982436}
     - target: {fileID: 3678888305797438972, guid: 33c6126c235fe7749840f30b654bbea4, type: 3}
+      propertyPath: offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678888305797438972, guid: 33c6126c235fe7749840f30b654bbea4, type: 3}
+      propertyPath: offset.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678888305797438972, guid: 33c6126c235fe7749840f30b654bbea4, type: 3}
       propertyPath: cameraBounds
       value: 
       objectReference: {fileID: 2091878827}
@@ -133859,16 +133867,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 107.11747, y: -7.716263}
-      - {x: 106.464966, y: 13.515907}
-      - {x: 75.18165, y: 13.466326}
-      - {x: 75.10257, y: 59.86952}
-      - {x: 107.185234, y: 59.52443}
-      - {x: 107.24139, y: 81.61046}
+    - - {x: 107.11747, y: -6.332657}
+      - {x: 107.15678, y: 15.314594}
+      - {x: 75.04328, y: 15.403372}
+      - {x: 75.10257, y: 59.039352}
+      - {x: 107.185234, y: 58.97099}
+      - {x: 107.379745, y: 81.88718}
       - {x: 20.937717, y: 81.99309}
       - {x: 20.727814, y: 38.29763}
-      - {x: -9.270448, y: 38.458412}
-      - {x: -10.151627, y: -17.169712}
+      - {x: -11.5510645, y: 38.078312}
+      - {x: -11.545338, y: -17.169712}
       - {x: 25.913412, y: -17.035616}
       - {x: 25.973385, y: -6.211953}
   m_UseDelaunayMesh: 0

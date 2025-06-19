@@ -1,23 +1,33 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class CameraBounds : MonoBehaviour
 {
-    private BoxCollider2D boundsCollider;
+    private Bounds _bounds;
 
-    public Vector2 MinBound => boundsCollider.bounds.min;
-    public Vector2 MaxBound => boundsCollider.bounds.max;
+    public Vector2 MinBound => _bounds.min;
+    public Vector2 MaxBound => _bounds.max;
 
     private void Awake()
     {
-        boundsCollider = GetComponent<BoxCollider2D>();
+        var col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            _bounds = col.bounds;
+        }
+        else
+        {
+            Debug.LogError("CameraBounds requiere un Collider2D.");
+        }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        if (GetComponent<BoxCollider2D>())
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
         {
-            Gizmos.DrawWireCube(GetComponent<BoxCollider2D>().bounds.center, GetComponent<BoxCollider2D>().bounds.size);
+            Gizmos.DrawWireCube(col.bounds.center, col.bounds.size);
         }
     }
 }
