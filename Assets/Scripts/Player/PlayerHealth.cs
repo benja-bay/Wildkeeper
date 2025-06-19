@@ -11,14 +11,14 @@ namespace Player
 {
     public class PlayerHealth : Health
     {
-        private void Start()
+        protected override void Start()
         {
-            base.Start(); // Inicializa color original en la clase base
+            base.Start();
 
             if (GameManager.Instance != null)
             {
                 _maxHealth = GameManager.Instance.maxHealth;
-                _currentHealth = GameManager.Instance.currentHealth;
+                _currentHealth = GameManager.Instance.maxHealth; // ← siempre inicia con vida completa
             }
         }
 
