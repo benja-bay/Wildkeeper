@@ -44941,6 +44941,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraBounds
       objectReference: {fileID: 0}
+    - target: {fileID: 7235116220416348855, guid: fabf0049e2c4ef54b828375fce9ba529, type: 3}
+      propertyPath: m_Size.x
+      value: 45.244705
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235116220416348855, guid: fabf0049e2c4ef54b828375fce9ba529, type: 3}
+      propertyPath: m_Size.y
+      value: 64.24788
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235116220416348855, guid: fabf0049e2c4ef54b828375fce9ba529, type: 3}
+      propertyPath: m_Offset.x
+      value: 10.744995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235116220416348855, guid: fabf0049e2c4ef54b828375fce9ba529, type: 3}
+      propertyPath: m_Offset.y
+      value: 17.064774
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
