@@ -25,13 +25,6 @@ namespace Enemies
         {
             base.TakeDamage(amount); // Aplica el daño usando la lógica de la clase base
             FlashDamage();
-
-            // Informa al EnemyController que revise si debe cambiar su comportamiento
-            EnemyController controller = GetComponent<EnemyController>();
-            if (controller != null)
-            {
-                controller.UpdateBehaviorStates(); // Recalcula los estados del enemigo con base en su salud actual
-            }
         }
 
         // Este método se ejecuta cuando la salud llega a 0
