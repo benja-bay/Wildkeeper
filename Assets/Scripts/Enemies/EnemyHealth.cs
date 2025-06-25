@@ -8,36 +8,36 @@ using UnityEngine;
 
 namespace Enemies
 {
-    // Esta clase gestiona la salud del enemigo y extiende la funcionalidad de una clase base llamada Health
+    /// <summary>
+    /// Esta clase gestiona la salud del enemigo y extiende la funcionalidad de una clase base llamada Health.
+    /// </summary>
     public class EnemyHealth : Health
     {
-        [Header("Death Effect")]
-        [SerializeField] private GameObject deathEffectPrefab;
-        private EnemyController controller;
+        private EnemyController _controller;
         
         private void Awake()
         {
-            controller = GetComponent<EnemyController>();
+            _controller = GetComponent<EnemyController>();
         }
         
-        // Este método se llama cuando el enemigo recibe daño
+        /// <summary>
+        /// Este método se llama cuando el enemigo recibe daño.
+        /// </summary>
+        /// <param name="amount">Cantidad de daño que recibe.</param>
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount); // Aplica el daño usando la lógica de la clase base
             FlashDamage();
         }
 
-        // Este método se ejecuta cuando la salud llega a 0
+        /// <summary>
+        /// Este método se ejecuta cuando la salud llega a 0.
+        /// </summary>
         public override void Die()
         {
             base.Die();
 
-            if (deathEffectPrefab != null)
-            {
-                Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
-            }
-
-            if (controller != null && controller.isBoss)
+            if (_controller != null && _controller.isBoss)
             {
                 GameManager.Instance?.NotifyBossDeath();
             }
