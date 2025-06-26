@@ -164,6 +164,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
   ProjectileSpeed: 0
   MeleeHitbox: {fileID: 5937673507004818753}
+  isBoss: 0
 --- !u!114 &572828240713295352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.5028055, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -345,7 +346,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2.005611, y: 2}
   m_EdgeRadius: 0
 --- !u!212 &4278129283745989567
 SpriteRenderer:

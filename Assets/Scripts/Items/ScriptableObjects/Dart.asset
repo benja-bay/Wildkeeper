@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbe5bbe0c170374db917c00f8075d0b, type: 3}
   m_Name: Dart
   m_EditorClassIdentifier: 
-  itemName: dardo
+  itemName: Dardo
   icon: {fileID: 0}
   description: 
   effectType: 1
   value: 0
-  maxAmount: 999
+  maxAmount: 50
+  keyID: 

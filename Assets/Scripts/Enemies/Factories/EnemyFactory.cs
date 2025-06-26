@@ -34,7 +34,8 @@ namespace Enemies.Factories
             // Asigna los puntos de patrulla y configura al enemigo
             controller.PatrolPoints = patrolPoints;
             controller.Initialize(config);
-
+            controller.SetInitialState();
+            
             return enemyInstance;
         }
     }

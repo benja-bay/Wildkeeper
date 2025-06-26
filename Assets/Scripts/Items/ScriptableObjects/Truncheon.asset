@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbe5bbe0c170374db917c00f8075d0b, type: 3}
   m_Name: Truncheon
   m_EditorClassIdentifier: 
-  itemName: cachiporra
+  itemName: Cachiporra
   icon: {fileID: 0}
   description: 
   effectType: 2
   value: 0
   maxAmount: 1
+  keyID: 

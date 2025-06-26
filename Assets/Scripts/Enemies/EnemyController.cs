@@ -71,7 +71,7 @@ namespace Enemies
             }
 
             // Establece el estado inicial del enemigo
-            SetInitialState();
+            
         }
 
         private void Update()
@@ -157,7 +157,7 @@ namespace Enemies
 
             // Asigna el estado inicial y de visión basado en el índice
             StartState = _stateFactory.GetState(
-                _config.StartState.Length > index ? _config.StartState[index] : BehaviorType.Idle);
+                _config.StartState.Length > index ? _config.StartState[index] : BehaviorType.Patrol);
 
             VisionState = _stateFactory.GetState(
                 _config.OnVisionState.Length > index ? _config.OnVisionState[index] : BehaviorType.Chase);

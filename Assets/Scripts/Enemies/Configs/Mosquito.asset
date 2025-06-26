@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Mosquito
   _health: 40
   _speed: 3
-  _damage: 20
+  _damage: 10
   _attackCooldown: 0.5
   _attackDistance: 10
   _attackType: 01000000
