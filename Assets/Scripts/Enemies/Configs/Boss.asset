@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Boss
   _health: 400
-  _speed: 4
+  _speed: 6
   _damage: 40
-  _attackCooldown: 3
+  _attackCooldown: 0.5
   _attackDistance: 3
   _attackType: 00000000
   _startState: 0

@@ -17,4 +17,5 @@ MonoBehaviour:
   description: 
   effectType: 1
   value: 0
-  maxAmount: 999
+  maxAmount: 50
+  keyID: 
