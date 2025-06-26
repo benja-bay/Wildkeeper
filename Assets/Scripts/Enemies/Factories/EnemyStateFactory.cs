@@ -15,7 +15,6 @@ namespace Enemies.Factories
         {
             return type switch
             {
-                BehaviorType.Idle => new IdleState(_controller),
                 BehaviorType.Patrol => new PatrolState(_controller),
                 BehaviorType.Chase => new ChaseState(_controller),
                 BehaviorType.Flee => new FleeState(_controller),

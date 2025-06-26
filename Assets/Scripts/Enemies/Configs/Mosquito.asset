@@ -17,16 +17,15 @@ MonoBehaviour:
   _speed: 3
   _damage: 20
   _attackCooldown: 0.5
-  _attackDistance: 10
+  _attackDistance: 8
   _attackType: 01000000
-  _startState: 01000000
-  _onVisionState: 03000000
+  _startState: 0
+  _onVisionState: 02000000
   _prefab: {fileID: 4917273793354472290, guid: 68e74f0060ca0e741b704005f30ad903, type: 3}
-  _behaviorSwitchHealthPercent: 0
   _visionDistance: 5
   _patrolWaitTime: 2
   _projectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
-  _projectileSpeed: 10
+  _projectileSpeed: 20
   _chargeSpeed: 0
   _chargeDuration: 0
   _chargeCooldown: 0

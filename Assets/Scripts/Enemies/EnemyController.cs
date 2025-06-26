@@ -139,28 +139,17 @@ namespace Enemies
             if (MeleeHitbox != null)
                 MeleeHitbox.gameObject.SetActive(active);
         }
-
-        // Actualiza los estados de comportamiento dependiendo de la salud
+        
+        
+        /// <summary>
+        /// Actualiza los estados del enemigo con base a las configuraciones.
+        /// </summary>
         public void UpdateBehaviorStates()
         {
-            int index = 0;
-
-            var healthComponent = GetComponent<EnemyHealth>();
-            if (healthComponent != null)
-            {
-                float percent = (float)healthComponent.CurrentHealth / healthComponent.MaxHealth * 100f;
-                if (percent <= _config.BehaviorSwitchHealthPercent)
-                {
-                    index = 1; // Cambia el índice si la salud es baja
-                }
-            }
-
-            // Asigna el estado inicial y de visión basado en el índice
-            StartState = _stateFactory.GetState(
-                _config.StartState.Length > index ? _config.StartState[index] : BehaviorType.Idle);
+            StartState = _stateFactory.GetState(_config.StartState);
 
             VisionState = _stateFactory.GetState(
-                _config.OnVisionState.Length > index ? _config.OnVisionState[index] : BehaviorType.Chase);
+                _config.OnVisionState.Length != 0 ? _config.OnVisionState[0] : BehaviorType.Chase);
         }
     }
 }

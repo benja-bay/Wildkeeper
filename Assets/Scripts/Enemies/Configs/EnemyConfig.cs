@@ -31,16 +31,12 @@ namespace Enemies
 
         [Header("Behavior Settings")]
         [Tooltip("Behaviors/states this enemy can transition between.")]
-        [SerializeField] private BehaviorType[] _startState; // Idle, Patrol
-        [SerializeField] private BehaviorType[] _onVisionState; // Chase, Flee
+        [SerializeField] private BehaviorType _startState; // Patrol
+        [SerializeField] private BehaviorType[] _onVisionState; // Chase, Flee, Charge
         
         [Header("Prefab")]
         [Tooltip("The prefab used to instantiate this enemy in the scene.")]
         [SerializeField] private GameObject _prefab;
-        
-        [Header("Health-Based Behavior Switch")]
-        [Tooltip("Porcentaje de vida para cambiar al segundo set de estados (StartState y OnVisionState).")]
-        [SerializeField, Range(0f, 100f)] private float _behaviorSwitchHealthPercent;
         
         [Header("Vision Settings")]
         [Tooltip("Detection radius for the enemy's vision system.")]
@@ -68,11 +64,10 @@ namespace Enemies
         public float AttackDistance => _attackDistance;
         public AttackType[] AttackTypes => _attackType;
         public float VisionDistance => _visionDistance;
-        public BehaviorType[] StartState => _startState;
+        public BehaviorType StartState => _startState;
         public BehaviorType[] OnVisionState => _onVisionState;
         public float PatrolWaitTime => _patrolWaitTime;
         public GameObject Prefab => _prefab;
-        public float BehaviorSwitchHealthPercent => _behaviorSwitchHealthPercent;
         public GameObject ProjectilePrefab => _projectilePrefab;
         public float ProjectileSpeed => _projectileSpeed;
         public float ChargeSpeed => _chargeSpeed;
