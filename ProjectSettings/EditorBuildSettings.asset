@@ -47,7 +47,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1/Boss Zone/BossZone.unity
     guid: 2ea6cf0679abf044a937deb6f6509872
-  - enabled: 1
-    path: Assets/Scenes/Menu/GameOver.unity
-    guid: b8b508dbc7be90f408e714f9ac783154
   m_configObjects: {}

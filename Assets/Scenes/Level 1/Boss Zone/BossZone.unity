@@ -739,10 +739,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 5715984186998225299, guid: dc8216c71450d584fb65c771bf0ef18c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
