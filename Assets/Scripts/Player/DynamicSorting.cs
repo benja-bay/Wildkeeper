@@ -34,10 +34,13 @@ public class DynamicSorting : MonoBehaviour
     private SpriteRenderer sr;
     // Lista para almacenar los Tilemaps encontrados en la escena
     private List<Tilemap> tilemaps = new List<Tilemap>();
-
-    // Awake se ejecuta al inicializar el objeto, antes de Start.
+    
+    private GameObject _player;
+    
     void Awake()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        
         // Obtener y cachear el SpriteRenderer del mismo GameObject
         sr = GetComponent<SpriteRenderer>();
 
@@ -61,7 +64,7 @@ public class DynamicSorting : MonoBehaviour
     void LateUpdate()
     {
         // Posici�n actual del jugador en el mundo
-        Vector3 playerPos = transform.position;
+        Vector3 playerPos = _player.transform.position;
 
         // Variables para determinar el tile m�s cercano en Y
         float nearestDistY = float.MaxValue;  // Distancia vertical m�s peque�a encontrada

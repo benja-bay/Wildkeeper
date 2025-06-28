@@ -60,8 +60,20 @@ namespace Player
         private PlayerStateMachine _stateMachine; // Manages player state transitions
         private AttackMode _lastAttackMode;
 
+        // SINGLETON (WIP)
+        public static Player Instance { get; private set; }
         void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
             // Initialize core components
             inputHandler = GetComponent<PlayerInputHandler>();
             rb2D = GetComponent<Rigidbody2D>();
