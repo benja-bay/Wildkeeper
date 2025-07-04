@@ -16,6 +16,7 @@ TagManager:
   - World
   - Deco
   - Ground
+  - Enemies
   - 
   - 
   - 
@@ -37,8 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - MiniMapIcons
   m_SortingLayers:
   - name: Ground
     uniqueID: 1261194627

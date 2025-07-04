@@ -1,3 +1,4 @@
+using System;
 using Systems;
 using TMPro;
 using UnityEngine;
@@ -7,9 +8,14 @@ namespace HUD
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Health health;
+        private Health health;
         [SerializeField] private Image healthBarFill;
         [SerializeField] private TextMeshProUGUI  healthBarText;
+
+        private void Awake()
+        {
+            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        }
 
         private void Update()
         {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5241269237882244737}
   - component: {fileID: 2258110519712055360}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4373146230287175173}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5371075550842653917}
   - component: {fileID: 1363052105503331978}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Handgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
