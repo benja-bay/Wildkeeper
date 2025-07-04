@@ -341,6 +341,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8036964934086657560, guid: a5ba3b753b175644fadd5ccd709ca302, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036964934086657560, guid: a5ba3b753b175644fadd5ccd709ca302, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8099010386522153881, guid: a5ba3b753b175644fadd5ccd709ca302, type: 3}
       propertyPath: m_Name
       value: BerryBush (2)
