@@ -11,44 +11,35 @@ namespace Weapons
     public class WeaponAim : MonoBehaviour
     {
         // === References ===
-        [SerializeField] private Transform _pivot; // Reference to the player's transform
+        [SerializeField] private Transform _pivot; // Player body pivot
 
         // === Configuration ===
-        [SerializeField] private float _distance; // Distance from player to weapon (e.g., for aiming)
+        [SerializeField] private float _distance = 1f; // Distance from player center to weapon
 
         private void Update()
         {
-            // Update weapon aim and position every frame
             UpdatePositionAndRotation();
         }
 
-        // Calculates direction from player to aim direction, rotates the weapon, and positions it accordingly
+        // Updates weapon's position and rotation to match player's aim direction
         public void UpdatePositionAndRotation()
         {
-            if (PlayerController.Player.Instance == null || _pivot == null)
+            var player = Player.Instance;
+            if (player == null || _pivot == null)
             {
-                Debug.LogError("WeaponAim: Missing player reference or pivot.");
+                Debug.LogError("WeaponAim: Missing player reference or pivot transform.");
                 return;
             }
 
-            // Use the player's current aim direction
-            Vector2 aimDir = PlayerController.Player.Instance.AimDirection;
+            Vector2 aimDir = player.AimDirection;
             if (aimDir == Vector2.zero)
-            {
-                // Default to right if idle (avoids NaN angles)
-                aimDir = Vector2.right;
-            }
+                aimDir = Vector2.right; // Default to right
 
-            // Calculate angle from direction
             float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
-
-            // Apply rotation
             transform.eulerAngles = new Vector3(0, 0, angle);
-
-            // Position the weapon at a fixed distance in that direction
             transform.position = _pivot.position + (Vector3)(aimDir.normalized * _distance);
 
-            // Flip weapon vertically if aiming left
+            // Vertical flip for left aim
             Vector3 localScale = Vector3.one;
             localScale.y = (angle > 90 || angle < -90) ? -1f : 1f;
             transform.localScale = localScale;

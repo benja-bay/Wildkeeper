@@ -84,6 +84,15 @@ namespace PlayerController
         // === Aiming Direction ===
         public Vector2 AimDirection { get; private set; } = Vector2.right;
 
+        /// <summary>
+        /// Sets the player's aim direction.
+        /// Use this instead of setting AimDirection directly.
+        /// </summary>
+        public void SetAimDirection(Vector2 direction)
+        {
+            AimDirection = direction;
+        }
+
         // === Singleton ===
         public static Player Instance { get; private set; }
 
@@ -169,11 +178,11 @@ namespace PlayerController
         {
             if (inputHandler.IsUsingMouse)
             {
-                AimDirection = inputHandler.MouseDirection;
+                SetAimDirection(inputHandler.MouseDirection);
             }
             else if (inputHandler.LastMovementDirection != Vector2.zero)
             {
-                AimDirection = inputHandler.LastMovementDirection;
+                SetAimDirection(inputHandler.LastMovementDirection);
             }
         }
 

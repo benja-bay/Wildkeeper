@@ -41,6 +41,16 @@ namespace PlayerController.State
             _attackDuration = Player.meleeAttackDuration;
             _attackTimer = _attackDuration;
 
+            // Capture aim direction ON ENTER
+            if (Player.inputHandler.IsUsingMouse)
+            {
+                Player.SetAimDirection(Player.inputHandler.MouseDirection);
+            }
+            else if (Player.inputHandler.LastMovementDirection != Vector2.zero)
+            {
+                Player.SetAimDirection(Player.inputHandler.LastMovementDirection);
+            }
+
             // Setup and activate the attack hitbox
             _attackHitbox.Initialize(Player, Player.GetComponent<PlayerInputHandler>(), Player.transform);
             _attackHitbox.SetMode(HitboxMode.KAttack);

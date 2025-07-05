@@ -178,7 +178,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.41670763, y: -0.00000011920929}
+  m_Offset: {x: -0.5084752, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -189,7 +189,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2334154, y: 2.1431687}
+  m_Size: {x: 2.9830496, y: 2.5280738}
   m_EdgeRadius: 0
 --- !u!1 &4459635685438684142
 GameObject:
@@ -381,8 +381,8 @@ MonoBehaviour:
   runDuration: 2
   runCooldown: 3
   runCooldownTimer: 0
-  meleeAttackDuration: 0.4
-  interactionDuration: 0.3
+  meleeAttackDuration: 0.6
+  interactionDuration: 0.5
   useItemDuration: 0.5
   meleeHitbox: {fileID: 1740963522436496346}
   hitboxDistance: 1.5
