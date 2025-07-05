@@ -60,6 +60,12 @@ namespace PlayerController.State
             {
                 StateMachine.ChangeState(Player.IdleState);
             }
+            
+            if (Player.inputHandler.runPressed && Player.RunState.CanRun() && Player.inputHandler.movementInput != Vector2.zero)
+            {
+                StateMachine.ChangeState(Player.RunState);
+                return;
+            }
         }
 
         public override void LogicUpdate()

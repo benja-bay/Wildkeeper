@@ -20,6 +20,7 @@ namespace PlayerController
         public bool attackPressed; // Whether the attack input was pressed
         public bool interactPressed; // Whether the interact input was pressed
         public bool useItemPressed;
+        public bool runPressed;
         public AttackMode CurrentAttackMode { get; private set; } = AttackMode.KMelee;
         public Vector2 MouseDirection { get; private set; } // Direction from player to mouse position
 
@@ -38,6 +39,7 @@ namespace PlayerController
             attackPressed = Input.GetButtonDown("Attack");
             interactPressed = Input.GetButtonDown("Interact");
             useItemPressed = Input.GetButtonDown("Use");
+            runPressed = Input.GetButtonDown("Run");
 
             // === Remember last movement direction for gamepad/keyboard aiming ===
             if (movementInput != Vector2.zero)
