@@ -10,10 +10,10 @@ namespace PlayerController.State
     public class PlayerInteractState : PlayerState
     {
         // === Interaction Configuration ===
-        private GameObject _meleeHitbox; // Reference to the melee hitbox reused for interaction
-        private Hitbox _interactionHitbox; // Component handling hitbox logic
-        private float _interactionDuration = 0.3f; // Total duration of the interaction
-        private float _interactionTimer; // Timer to track interaction progress
+        private GameObject _meleeHitbox;                // Reference to the melee hitbox reused for interaction
+        private Hitbox _interactionHitbox;              // Component handling hitbox logic
+        private float _interactionDuration;             // Total duration of the interaction
+        private float _interactionTimer;                // Timer to track interaction progress
 
         public PlayerInteractState(Player player, PlayerStateMachine stateMachine, GameObject meleeHitbox)
             : base(player, stateMachine)
@@ -26,7 +26,12 @@ namespace PlayerController.State
         public override void Enter()
         {
             base.Enter();
+
             Player.isInteracting = true;
+
+            // Load configurable duration from Player
+            _interactionDuration = Player.interactionDuration;
+            _interactionTimer = _interactionDuration;
 
             // Stop movement and play idle animation
             Player.Move(Vector2.zero);
@@ -38,10 +43,7 @@ namespace PlayerController.State
             _interactionHitbox.UpdatePositionAndRotation();
 
             Debug.Log("Interaction hitbox activated");
-            
-            _meleeHitbox.SetActive(true); // Activate hitbox GameObject
-
-            _interactionTimer = _interactionDuration;
+            _meleeHitbox.SetActive(true);
         }
 
         // Called every frame to handle input and update logic
@@ -51,7 +53,7 @@ namespace PlayerController.State
 
             _interactionTimer -= Time.deltaTime;
 
-            // Keep the hitbox aligned to mouse direction
+            // Keep the hitbox aligned to aim direction
             _interactionHitbox.UpdatePositionAndRotation();
 
             // Allow cancelling with item usage
@@ -80,13 +82,9 @@ namespace PlayerController.State
             if (_interactionTimer <= 0f)
             {
                 if (Player.inputHandler.movementInput != Vector2.zero)
-                {
                     StateMachine.ChangeState(Player.WalkState);
-                }
                 else
-                {
                     StateMachine.ChangeState(Player.IdleState);
-                }
             }
         }
 
@@ -95,7 +93,7 @@ namespace PlayerController.State
         {
             base.Exit();
             Player.isInteracting = false;
-            _meleeHitbox.SetActive(false); // Deactivate hitbox GameObject
+            _meleeHitbox.SetActive(false);
         }
     }
 }

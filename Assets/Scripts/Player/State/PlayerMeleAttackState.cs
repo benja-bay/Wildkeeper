@@ -12,7 +12,7 @@ namespace PlayerController.State
         // === Attack Configuration ===
         private GameObject _meleeHitbox;              // GameObject used for melee collision
         private Hitbox _attackHitbox;                 // Script component managing hitbox behavior
-        private float _attackDuration = 0.4f;         // Total time the attack lasts
+        private float _attackDuration;                // Total time the attack lasts
         private float _attackTimer;                   // Internal timer for attack duration
         private bool _unlocked = false;               // Whether the melee attack is unlocked
 
@@ -37,6 +37,10 @@ namespace PlayerController.State
 
             Player.isAttacking = true;
 
+            // Use player's configured attack duration
+            _attackDuration = Player.meleeAttackDuration;
+            _attackTimer = _attackDuration;
+
             // Setup and activate the attack hitbox
             _attackHitbox.Initialize(Player, Player.GetComponent<PlayerInputHandler>(), Player.transform);
             _attackHitbox.SetMode(HitboxMode.KAttack);
@@ -46,7 +50,6 @@ namespace PlayerController.State
 
             Player.Move(Vector2.zero); // Stop player movement during attack
             _meleeHitbox.SetActive(true);
-            _attackTimer = _attackDuration;
 
             // Use the player's current aim direction for animation
             Player.PlayerAnimation.PlayMeleeAttack(Player.AimDirection);

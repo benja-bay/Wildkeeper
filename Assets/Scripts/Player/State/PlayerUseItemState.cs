@@ -10,7 +10,7 @@ namespace PlayerController.State
 {
     public class PlayerUseItemState : PlayerState
     {
-        private float _useDuration = 0.5f;             // Time it takes to use an item
+        private float _useDuration;                    // Time it takes to use an item
         private float _timer;                          // Internal timer for use duration
         private ItemSO _itemToUse;                     // The item to be consumed
 
@@ -20,6 +20,9 @@ namespace PlayerController.State
         public override void Enter()
         {
             base.Enter();
+
+            // Get configurable duration from Player
+            _useDuration = Player.useItemDuration;
             _timer = _useDuration;
 
             // Stop movement and play idle animation

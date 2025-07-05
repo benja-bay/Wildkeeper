@@ -15,17 +15,28 @@ namespace PlayerController
     {
         // === Movement Configuration ===
         [Header("Movement Settings")]
-        public float moveSpeed = 3f; // Player movement speed
+        public float moveSpeed = 3f;
         
         [Header("Run Settings")]
         public float runSpeed = 6f;
         public float runDuration = 2f;
         public float runCooldown = 3f;
-        [HideInInspector] public float runCooldownTimer = 0f; // Tracks remaining cooldown time
+        [HideInInspector] public float runCooldownTimer = 0f;
+
+        // === State Durations Configuration ===
+        [Header("State Durations")]
+        [Tooltip("Duration of the melee attack animation/effect")]
+        public float meleeAttackDuration = 0.4f;
+        
+        [Tooltip("Duration of interaction (e.g. pressing E)")]
+        public float interactionDuration = 0.3f;
+        
+        [Tooltip("Duration of using a consumable item")]
+        public float useItemDuration = 0.5f;
 
         // === Hitbox Configuration ===
         [Header("Hitbox")]
-        public GameObject meleeHitbox; // Reference to melee hitbox
+        public GameObject meleeHitbox;
 
         // === Attack Configuration ===
         [Header("Ranged")]
