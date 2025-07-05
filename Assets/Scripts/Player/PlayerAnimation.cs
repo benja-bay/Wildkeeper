@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-namespace Player
+namespace PlayerController
 {
     public class PlayerAnimation
     {
@@ -37,13 +37,13 @@ namespace Player
             _animator.SetFloat(_moveY, movementInput.y);
         }
 
-        // Plays melee attack animation in the direction of the mouse
-        public void PlayMeleeAttack(Vector2 mouseDirection)
+        // Plays melee attack animation in the direction of the aim
+        public void PlayMeleeAttack(Vector2 aimDirection)
         {
             _animator.SetBool(_isMoving, false);
             _animator.SetBool("IsAttacking", true);
-            _animator.SetFloat("AttackX", mouseDirection.x);
-            _animator.SetFloat("AttackY", mouseDirection.y);
+            _animator.SetFloat("AttackX", aimDirection.x);
+            _animator.SetFloat("AttackY", aimDirection.y);
             _animator.CrossFade("Attack", 0.1f); // Smooth transition to attack animation
         }
 

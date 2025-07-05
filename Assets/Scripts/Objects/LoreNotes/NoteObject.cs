@@ -1,5 +1,5 @@
 using UnityEngine;
-using Player;
+using PlayerController;
 
 namespace Objects
 {
@@ -8,7 +8,7 @@ namespace Objects
         [Header("Note data")]
         [SerializeField] private GameObject notePrefab;
         
-        public void Interact(Player.Player player)
+        public void Interact(PlayerController.Player player)
         {
             notePrefab?.SetActive(true);
             Time.timeScale = 0;

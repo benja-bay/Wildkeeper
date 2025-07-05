@@ -145,8 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98827d365acdce84995f05e01e7ef94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distance: 1.75
-  damage: 20
   _pivot: {fileID: 2386255356258706893}
 --- !u!61 &8461147880473744951
 BoxCollider2D:
@@ -180,7 +178,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.41670763, y: -0.00000011920929}
+  m_Offset: {x: -0.5084752, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -191,7 +189,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2334154, y: 2.1431687}
+  m_Size: {x: 2.9830496, y: 2.5280738}
   m_EdgeRadius: 0
 --- !u!1 &4459635685438684142
 GameObject:
@@ -240,7 +238,6 @@ GameObject:
   - component: {fileID: 4818154827132350579}
   - component: {fileID: 4182261414977626514}
   - component: {fileID: 239048842380173462}
-  - component: {fileID: 4606721064450143992}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -379,8 +376,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b0633734450364e91f197655946b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 5
+  runSpeed: 10
+  runDuration: 2
+  runCooldown: 3
+  runCooldownTimer: 0
+  meleeAttackDuration: 0.6
+  interactionDuration: 0.5
+  useItemDuration: 0.5
   meleeHitbox: {fileID: 1740963522436496346}
+  hitboxDistance: 1.5
+  meleeDamage: 20
   _weaponObject: {fileID: 836138654105401596}
   _weaponScript: {fileID: 4061528865151626397}
   _weaponAim: {fileID: 6849549718662829352}
@@ -410,6 +416,7 @@ MonoBehaviour:
   attackPressed: 0
   interactPressed: 0
   useItemPressed: 0
+  runPressed: 0
   _playerTransform: {fileID: 4531211341117968607}
   _camera: {fileID: 0}
 --- !u!114 &4182261414977626514
@@ -465,22 +472,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.9}
   m_Size: {x: 0.900609, y: 1.7451289}
   m_Direction: 0
---- !u!114 &4606721064450143992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5655322108261420855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d70b09b3662e141835c848108991a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSortingLayer: World
-  searchRadius: 4
-  orderInFront: 10
-  orderBehind: -10
 --- !u!1 &6881996268359934356
 GameObject:
   m_ObjectHideFlags: 0

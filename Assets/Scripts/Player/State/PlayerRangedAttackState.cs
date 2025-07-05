@@ -6,7 +6,7 @@
 using UnityEngine;
 using Weapons;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerRangedAttackState : PlayerState
     {
@@ -56,10 +56,27 @@ namespace Player.State
             Player.Inventory.ConsumeAmmo(Player.DartItem);
         }
 
-        // Called every frame to handle aiming updates
+        // Called every frame to handle aiming updates and input
         public override void HandleInput()
         {
+            base.HandleInput();
+
+            // Update aiming direction
             _aim.UpdatePositionAndRotation();
+
+            // Allow cancelling with Use Item input
+            if (Player.inputHandler.useItemPressed)
+            {
+                StateMachine.ChangeState(Player.UseItemState);
+                return;
+            }
+
+            // Allow cancelling with Interact input
+            if (Player.inputHandler.interactPressed)
+            {
+                StateMachine.ChangeState(Player.InteractState);
+                return;
+            }
         }
 
         // Called every frame to manage shooting and transitions

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reusable: 0
   spriteRenderer: {fileID: 0}
-  activatedSprite: {fileID: 1886897642, guid: 83d4b3efdb6a7ac45a63b0d2e3efa9ed, type: 3}
+  activatedSprite: {fileID: 1372143469, guid: 83d4b3efdb6a7ac45a63b0d2e3efa9ed, type: 3}
   activateObjects: 1
   objectID: cabin4_buton_1
   localObjects: []

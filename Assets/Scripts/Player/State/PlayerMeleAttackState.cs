@@ -5,14 +5,14 @@
 
 using UnityEngine;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerMeleAttackState : PlayerState
     {
         // === Attack Configuration ===
         private GameObject _meleeHitbox;              // GameObject used for melee collision
         private Hitbox _attackHitbox;                 // Script component managing hitbox behavior
-        private float _attackDuration = 0.4f;         // Total time the attack lasts
+        private float _attackDuration;                // Total time the attack lasts
         private float _attackTimer;                   // Internal timer for attack duration
         private bool _unlocked = false;               // Whether the melee attack is unlocked
 
@@ -37,6 +37,20 @@ namespace Player.State
 
             Player.isAttacking = true;
 
+            // Use player's configured attack duration
+            _attackDuration = Player.meleeAttackDuration;
+            _attackTimer = _attackDuration;
+
+            // Capture aim direction ON ENTER
+            if (Player.inputHandler.IsUsingMouse)
+            {
+                Player.SetAimDirection(Player.inputHandler.MouseDirection);
+            }
+            else if (Player.inputHandler.LastMovementDirection != Vector2.zero)
+            {
+                Player.SetAimDirection(Player.inputHandler.LastMovementDirection);
+            }
+
             // Setup and activate the attack hitbox
             _attackHitbox.Initialize(Player, Player.GetComponent<PlayerInputHandler>(), Player.transform);
             _attackHitbox.SetMode(HitboxMode.KAttack);
@@ -46,10 +60,9 @@ namespace Player.State
 
             Player.Move(Vector2.zero); // Stop player movement during attack
             _meleeHitbox.SetActive(true);
-            _attackTimer = _attackDuration;
 
-            Vector2 mouseDirection = Player.inputHandler.MouseDirection;
-            Player.PlayerAnimation.PlayMeleeAttack(mouseDirection);
+            // Use the player's current aim direction for animation
+            Player.PlayerAnimation.PlayMeleeAttack(Player.AimDirection);
         }
 
         // Called every frame while this state is active
@@ -60,6 +73,20 @@ namespace Player.State
 
             // Continuously update hitbox orientation
             _attackHitbox.UpdatePositionAndRotation();
+
+            // Allow cancelling with Use Item input
+            if (Player.inputHandler.useItemPressed)
+            {
+                StateMachine.ChangeState(Player.UseItemState);
+                return;
+            }
+
+            // Allow cancelling with Interact input
+            if (Player.inputHandler.interactPressed)
+            {
+                StateMachine.ChangeState(Player.InteractState);
+                return;
+            }
 
             // End attack when timer finishes and transition to next state
             if (_attackTimer <= 0f)

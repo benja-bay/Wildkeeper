@@ -29,7 +29,7 @@ public class DoorObject : MonoBehaviour, IInteractable
             ? spawnData.spawnPointIDs[selectedSpawnIndex]
             : "";
 
-    public void Interact(Player.Player player)
+    public void Interact(PlayerController.Player player)
     {
         if (requiresKey)
         {

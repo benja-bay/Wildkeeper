@@ -42,7 +42,7 @@ namespace Objects
             }
         }
 
-        public void Interact(Player.Player player)
+        public void Interact(PlayerController.Player player)
         {
             if (_hasBeenUsed && !reusable)
             {

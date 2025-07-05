@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Items;
-using Player;
+using PlayerController;
 
 namespace HUD
 {
@@ -15,7 +15,7 @@ namespace HUD
         private void Start()
         {
             var playerGO = GameObject.FindWithTag("Player");
-            var _player = playerGO.GetComponent<Player.Player>();
+            var _player = playerGO.GetComponent<PlayerController.Player>();
             _inventory = _player.Inventory;
 
             UpdateBerryText();

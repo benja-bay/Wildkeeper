@@ -1,5 +1,5 @@
 // ==============================
-// MeleeAttackHitbox.cs
+// Hitbox.cs
 // Manages position, rotation, and collision detection of the melee hitbox
 // ==============================
 
@@ -7,11 +7,11 @@ using Enemies;
 using Objects;
 using UnityEngine;
 
-namespace Player
+namespace PlayerController
 {
     public enum HitboxMode
     {
-        KAttack, // Melee attack mode
+        KAttack,   // Melee attack mode
         KInteract, // Interaction mode
     }
 
@@ -19,13 +19,9 @@ namespace Player
     {
         // === References ===
         private Transform _playerTransform; // Reference to the player's transform
-        private PlayerInputHandler _inputHandler; // Reference to the player's input handler
-        private Player _player; // Reference to the Player script
+        private Player _player;             // Reference to the Player script
 
-        // === Configuration ===
-        [SerializeField] private float _distance = 1f; // Distance from the player to place the hitbox
-        public int damage = 1; // Damage dealt by the hitbox
-        [SerializeField] private Transform _pivot;
+        [SerializeField] private Transform _pivot; // Pivot for offset positioning
 
         private HitboxMode _mode = HitboxMode.KAttack; // Current operating mode of the hitbox
 
@@ -34,30 +30,31 @@ namespace Player
         {
             // Initialize references from the player
             _player = playerRef;
-            _inputHandler = inputHandler;
             _playerTransform = playerTransform;
         }
 
         public void SetMode(HitboxMode mode)
         {
-            // Change the hitbox behavior based on current interaction type
             _mode = mode;
         }
 
-        // === Updates hitbox position and rotation to match the direction of the mouse ===
+        // === Updates hitbox position and rotation to match the player's aim direction ===
         public void UpdatePositionAndRotation()
         {
-            if (_inputHandler == null || _playerTransform == null)
+            if (_player == null || _playerTransform == null)
             {
                 Debug.LogError("MeleeAttackHitbox: References not initialized. Call Initialize() before using.");
                 return;
             }
 
-            // Calculate direction based on mouse input and position hitbox accordingly
-            Vector2 direction = _inputHandler.MouseDirection;
-            transform.position = _pivot.position + (Vector3)(direction.normalized * _distance);
+            // Use the player's current aim direction
+            Vector2 direction = _player.AimDirection;
 
-            // Rotate hitbox to face the mouse direction
+            // Get configurable distance from Player
+            float distance = _player.hitboxDistance;
+            transform.position = _pivot.position + (Vector3)(direction.normalized * distance);
+
+            // Rotate hitbox to face the aim direction
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
@@ -75,7 +72,6 @@ namespace Player
             switch (_mode)
             {
                 case HitboxMode.KAttack:
-                    // Handle melee attack collision
                     if (!_player.isAttacking) return;
 
                     if (other.CompareTag("Enemy"))
@@ -83,14 +79,14 @@ namespace Player
                         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(damage);
-                            Debug.Log("Damage was caused to the enemy");
+                            int damageAmount = _player.meleeDamage;
+                            enemyHealth.TakeDamage(damageAmount);
+                            Debug.Log($"Damage was caused to the enemy: {damageAmount}");
                         }
                     }
                     break;
 
                 case HitboxMode.KInteract:
-                    // Handle interaction with objects
                     if (!_player.isInteracting) return;
 
                     if (other.CompareTag("Interactable"))
@@ -105,6 +101,5 @@ namespace Player
                     break;
             }
         }
-
     }
 }

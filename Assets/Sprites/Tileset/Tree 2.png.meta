@@ -97,22 +97,51 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree 2_0
+      name: Tree 2_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 3
-        width: 89
-        height: 123
-      alignment: 9
-      pivot: {x: 0.47822398, y: 0.24791938}
+        x: 0
+        y: 40
+        width: 93
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -13.5, y: -45}
+        - {x: -13.5, y: -37}
+        - {x: 8.5, y: -37}
+        - {x: 8.5, y: -45}
       tessellationDetail: 0
       bones: []
       spriteID: e6ec6595845603b44be6d7b20c3733fe
       internalID: 1815785866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 93
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10.5, y: -4}
+        - {x: -13.5, y: 20}
+        - {x: 8.5, y: 20}
+        - {x: 5.5, y: -4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac1d251af6bed84192d3ce9f426d4c3
+      internalID: -1656591846
       vertices: []
       indices: 
       edges: []
@@ -128,7 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tree 2_0: 1815785866
+      Tree 2_0: -1656591846
+      Tree 2_1: 1815785866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
