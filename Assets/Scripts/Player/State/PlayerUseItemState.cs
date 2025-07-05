@@ -15,6 +15,7 @@ namespace Player.State
         private ItemSO _itemToUse;                     // The item to be consumed
 
         public PlayerUseItemState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
+
         // Called once when this state becomes active
         public override void Enter()
         {
@@ -46,6 +47,30 @@ namespace Player.State
             base.HandleInput();
 
             _timer -= Time.deltaTime;
+
+            // Allow cancelling with attack input
+            if (Player.inputHandler.attackPressed)
+            {
+                if (Player.inputHandler.CurrentAttackMode == AttackMode.KMelee && Player.MeleAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.MeleAttackState);
+                    return;
+                }
+                else if (Player.inputHandler.CurrentAttackMode == AttackMode.KRanged && Player.RangedAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.RangedAttackState);
+                    return;
+                }
+            }
+
+            // Allow cancelling with interact input
+            if (Player.inputHandler.interactPressed)
+            {
+                StateMachine.ChangeState(Player.InteractState);
+                return;
+            }
+
+            // Transition to idle or walk after using item
             if (_timer <= 0f)
             {
                 if (Player.inputHandler.movementInput != Vector2.zero)
