@@ -61,6 +61,20 @@ namespace Player.State
             // Continuously update hitbox orientation
             _attackHitbox.UpdatePositionAndRotation();
 
+            // Allow cancelling with Use Item input
+            if (Player.inputHandler.useItemPressed)
+            {
+                StateMachine.ChangeState(Player.UseItemState);
+                return;
+            }
+
+            // Allow cancelling with Interact input
+            if (Player.inputHandler.interactPressed)
+            {
+                StateMachine.ChangeState(Player.InteractState);
+                return;
+            }
+
             // End attack when timer finishes and transition to next state
             if (_attackTimer <= 0f)
             {
