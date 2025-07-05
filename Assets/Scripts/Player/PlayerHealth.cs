@@ -45,17 +45,10 @@ namespace Player
             base.Die();
             Debug.Log("¡El jugador ha muerto!");
 
-            if (TryGetComponent(out PlayerInputHandler input)) input.enabled = false;
-            if (TryGetComponent(out Rigidbody2D rb)) rb.velocity = Vector2.zero;
-            
             if (TryGetComponent(out Player player))
             {
-                player.Move(Vector2.zero);
-                player.ChangeToIdleState();
+                player.ChangeToDeathState();
             }
-
-            Animator anim = GetComponent<Animator>();
-            if (anim != null) anim.SetTrigger("Die");
 
             enabled = false;
 

@@ -54,6 +54,7 @@ namespace Player
         [HideInInspector] public PlayerInteractState InteractState;
         [HideInInspector] public PlayerRangedAttackState RangedAttackState;
         [HideInInspector] public PlayerUseItemState UseItemState;
+        [HideInInspector] public PlayerDeathState DeathState;
 
         // === Private Components ===
         private Animator _animator;
@@ -91,6 +92,7 @@ namespace Player
             InteractState = new PlayerInteractState(this, _stateMachine, meleeHitbox);
             RangedAttackState = new PlayerRangedAttackState(this, _stateMachine, _weaponScript, _weaponAim);
             UseItemState = new PlayerUseItemState(this, _stateMachine);
+            DeathState = new PlayerDeathState(this, _stateMachine);
         }
 
         void Start()
@@ -131,11 +133,6 @@ namespace Player
         {
             // Move the player using Rigidbody2D
             rb2D.velocity = direction * moveSpeed;
-        }
-        
-        public void ChangeToIdleState()
-        {
-            _stateMachine.ChangeState(IdleState);
         }
 
         // === Refactored methods ===
@@ -210,6 +207,11 @@ namespace Player
         {
             CheckMeleeUnlock();
             CheckRangedUnlock();
+        }
+        
+        public void ChangeToDeathState()
+        {
+            _stateMachine.ChangeState(DeathState);
         }
     }
 }
