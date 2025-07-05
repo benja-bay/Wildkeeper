@@ -16,11 +16,16 @@ namespace Player.State
         {
             base.Enter();
 
-            // Stop movement and disable interactions
+            // Stop movement
             Player.Move(Vector2.zero);
+
+            // Ensure idle animation so movement stops visually
+            Player.PlayerAnimation.PlayIdle();
+
+            // Disable player input so no new commands come in
             Player.inputHandler.enabled = false;
 
-            // Play death animation
+            // Play death animation trigger
             Animator anim = Player.GetComponent<Animator>();
             if (anim != null)
             {
@@ -30,15 +35,14 @@ namespace Player.State
             Debug.Log("PlayerDeathState: Player has entered the death state.");
         }
 
-        // Player can't do anything while dead
         public override void HandleInput()
         {
-            // Intentionally empty - no inputs accepted
+            // Intentionally empty - no inputs accepted while dead
         }
 
         public override void LogicUpdate()
         {
-            // No logic updates needed when dead
+            // No logic updates while dead
         }
 
         public override void PhysicsUpdate()
