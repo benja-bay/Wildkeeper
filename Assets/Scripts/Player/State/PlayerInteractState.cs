@@ -28,6 +28,10 @@ namespace Player.State
             base.Enter();
             Player.isInteracting = true;
 
+            // Stop movement and play idle animation
+            Player.Move(Vector2.zero);
+            Player.PlayerAnimation.PlayIdle();
+
             // Setup and activate interaction hitbox
             _interactionHitbox.Initialize(Player, Player.GetComponent<PlayerInputHandler>(), Player.transform);
             _interactionHitbox.SetMode(HitboxMode.KInteract);
