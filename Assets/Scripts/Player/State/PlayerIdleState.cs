@@ -28,12 +28,14 @@ namespace Player.State
                 StateMachine.ChangeState(Player.UseItemState);
                 return;
             }
+            
             // Handle Interact input
             if (Player.inputHandler.interactPressed)
             {
                 StateMachine.ChangeState(Player.InteractState);
                 return;
             }
+            
             // Handle Attack input
             if (Player.inputHandler.attackPressed)
             {
@@ -52,6 +54,7 @@ namespace Player.State
                     Debug.Log("Attack mode not unlocked.");
                 }
             }
+            
             // Handle movement input
             if (Player.inputHandler.movementInput != Vector2.zero)
             {
