@@ -114,13 +114,6 @@ namespace Player
         {
             HandleAttackModeSwitch();
             EnsureWeaponHiddenIfUnavailable();
-            HandleAttackInput();
-
-            if (inputHandler.useItemPressed)
-            {
-                _stateMachine.ChangeState(UseItemState);
-                return;
-            }
 
             CheckUnlocks();
 
