@@ -62,6 +62,7 @@ namespace Player
 
         // SINGLETON (WIP)
         public static Player Instance { get; private set; }
+
         void Awake()
         {
             if (Instance == null)
@@ -111,71 +112,18 @@ namespace Player
 
         void Update()
         {
-            // Handle switching between melee and ranged modes with mouse scroll
-            if (_lastAttackMode != inputHandler.CurrentAttackMode)
-            {
-                _lastAttackMode = inputHandler.CurrentAttackMode;
+            HandleAttackModeSwitch();
+            EnsureWeaponHiddenIfUnavailable();
+            HandleAttackInput();
 
-                bool canUseRanged = RangedAttackState.IsUnlocked && Inventory.HasAmmo(DartItem);
-                _weaponObject.SetActive(_lastAttackMode == AttackMode.KRanged && canUseRanged);
-            }
-
-            // Ensure weapon is hidden if ranged mode isn't usable
-            if (inputHandler.CurrentAttackMode == AttackMode.KRanged
-                && (!RangedAttackState.IsUnlocked || !Inventory.HasAmmo(DartItem)))
-            {
-                _weaponObject.SetActive(false);
-            }
-
-            // Handle attack input based on current mode and unlocks
-            if (inputHandler.attackPressed)
-            {
-                if (inputHandler.CurrentAttackMode == AttackMode.KMelee && MeleAttackState.IsUnlocked)
-                {
-                    _weaponObject.SetActive(false);
-                    _stateMachine.ChangeState(MeleAttackState);
-                }
-                else if (inputHandler.CurrentAttackMode == AttackMode.KRanged && RangedAttackState.IsUnlocked)
-                {
-                    _weaponObject.SetActive(true);
-                    _stateMachine.ChangeState(RangedAttackState);
-                }
-                else
-                {
-                    Debug.Log("Attack mode not unlocked.");
-                }
-            }
-
-            // Handle item use input
             if (inputHandler.useItemPressed)
             {
                 _stateMachine.ChangeState(UseItemState);
                 return;
             }
 
-            // Automatically unlock melee attack if player owns the required item
-            if (!MeleAttackState.IsUnlocked && Inventory.GetItemCount(meleeUnlockItem) > 0)
-            {
-                MeleAttackState.Unlock();
-                Debug.Log("Melee attack unlocked.");
-                if (meleeIconHUD != null)
-                {
-                    meleeIconHUD.SetActive(true);
-                }
-            }
+            CheckUnlocks();
 
-            // Automatically unlock ranged attack if player owns the required item
-            if (!RangedAttackState.IsUnlocked && Inventory.GetItemCount(rangedUnlockItem) > 0)
-            {
-                RangedAttackState.Unlock();
-                Debug.Log("Ranged attack unlocked.");
-                if (rangedIconHUD != null)
-                {
-                    rangedIconHUD.SetActive(true);
-                }
-            }
-
-            // Update current state logic and input
             _stateMachine.CurrentState.HandleInput();
             _stateMachine.CurrentState.LogicUpdate();
         }
@@ -195,6 +143,80 @@ namespace Player
         public void ChangeToIdleState()
         {
             _stateMachine.ChangeState(IdleState);
+        }
+
+        // === Refactored methods ===
+
+        private void HandleAttackModeSwitch()
+        {
+            if (_lastAttackMode != inputHandler.CurrentAttackMode)
+            {
+                _lastAttackMode = inputHandler.CurrentAttackMode;
+
+                bool canUseRanged = RangedAttackState.IsUnlocked && Inventory.HasAmmo(DartItem);
+                _weaponObject.SetActive(_lastAttackMode == AttackMode.KRanged && canUseRanged);
+            }
+        }
+
+        private void EnsureWeaponHiddenIfUnavailable()
+        {
+            if (inputHandler.CurrentAttackMode == AttackMode.KRanged
+                && (!RangedAttackState.IsUnlocked || !Inventory.HasAmmo(DartItem)))
+            {
+                _weaponObject.SetActive(false);
+            }
+        }
+
+        private void HandleAttackInput()
+        {
+            if (!inputHandler.attackPressed) return;
+
+            if (inputHandler.CurrentAttackMode == AttackMode.KMelee && MeleAttackState.IsUnlocked)
+            {
+                _weaponObject.SetActive(false);
+                _stateMachine.ChangeState(MeleAttackState);
+            }
+            else if (inputHandler.CurrentAttackMode == AttackMode.KRanged && RangedAttackState.IsUnlocked)
+            {
+                _weaponObject.SetActive(true);
+                _stateMachine.ChangeState(RangedAttackState);
+            }
+            else
+            {
+                Debug.Log("Attack mode not unlocked.");
+            }
+        }
+
+        private void CheckMeleeUnlock()
+        {
+            if (!MeleAttackState.IsUnlocked && Inventory.GetItemCount(meleeUnlockItem) > 0)
+            {
+                MeleAttackState.Unlock();
+                Debug.Log("Melee attack unlocked.");
+                if (meleeIconHUD != null)
+                {
+                    meleeIconHUD.SetActive(true);
+                }
+            }
+        }
+
+        private void CheckRangedUnlock()
+        {
+            if (!RangedAttackState.IsUnlocked && Inventory.GetItemCount(rangedUnlockItem) > 0)
+            {
+                RangedAttackState.Unlock();
+                Debug.Log("Ranged attack unlocked.");
+                if (rangedIconHUD != null)
+                {
+                    rangedIconHUD.SetActive(true);
+                }
+            }
+        }
+
+        private void CheckUnlocks()
+        {
+            CheckMeleeUnlock();
+            CheckRangedUnlock();
         }
     }
 }
