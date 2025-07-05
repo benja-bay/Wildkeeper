@@ -21,10 +21,7 @@ namespace PlayerController
         private Transform _playerTransform; // Reference to the player's transform
         private Player _player;             // Reference to the Player script
 
-        // === Configuration ===
-        [SerializeField] private float _distance = 1f; // Distance from the player to place the hitbox
-        public int damage = 1;                         // Damage dealt by the hitbox
-        [SerializeField] private Transform _pivot;
+        [SerializeField] private Transform _pivot; // Pivot for offset positioning
 
         private HitboxMode _mode = HitboxMode.KAttack; // Current operating mode of the hitbox
 
@@ -38,7 +35,6 @@ namespace PlayerController
 
         public void SetMode(HitboxMode mode)
         {
-            // Change the hitbox behavior based on current interaction type
             _mode = mode;
         }
 
@@ -54,8 +50,9 @@ namespace PlayerController
             // Use the player's current aim direction
             Vector2 direction = _player.AimDirection;
 
-            // Position the hitbox at the correct distance in that direction
-            transform.position = _pivot.position + (Vector3)(direction.normalized * _distance);
+            // Get configurable distance from Player
+            float distance = _player.hitboxDistance;
+            transform.position = _pivot.position + (Vector3)(direction.normalized * distance);
 
             // Rotate hitbox to face the aim direction
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -75,7 +72,6 @@ namespace PlayerController
             switch (_mode)
             {
                 case HitboxMode.KAttack:
-                    // Handle melee attack collision
                     if (!_player.isAttacking) return;
 
                     if (other.CompareTag("Enemy"))
@@ -83,14 +79,14 @@ namespace PlayerController
                         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(damage);
-                            Debug.Log("Damage was caused to the enemy");
+                            int damageAmount = _player.meleeDamage;
+                            enemyHealth.TakeDamage(damageAmount);
+                            Debug.Log($"Damage was caused to the enemy: {damageAmount}");
                         }
                     }
                     break;
 
                 case HitboxMode.KInteract:
-                    // Handle interaction with objects
                     if (!_player.isInteracting) return;
 
                     if (other.CompareTag("Interactable"))

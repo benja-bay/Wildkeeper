@@ -35,8 +35,12 @@ namespace PlayerController
         public float useItemDuration = 0.5f;
 
         // === Hitbox Configuration ===
-        [Header("Hitbox")]
+        [Header("Hitbox Settings")]
         public GameObject meleeHitbox;
+        [Tooltip("Distance from the player to the melee hitbox during attack/interact")]
+        public float hitboxDistance = 1f;
+        [Tooltip("Damage dealt by melee attacks")]
+        public int meleeDamage = 1;
 
         // === Attack Configuration ===
         [Header("Ranged")]

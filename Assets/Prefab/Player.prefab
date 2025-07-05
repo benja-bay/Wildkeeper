@@ -145,8 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98827d365acdce84995f05e01e7ef94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distance: 1.75
-  damage: 20
   _pivot: {fileID: 2386255356258706893}
 --- !u!61 &8461147880473744951
 BoxCollider2D:
@@ -379,7 +377,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  runSpeed: 6
+  runDuration: 2
+  runCooldown: 3
+  runCooldownTimer: 0
+  meleeAttackDuration: 0.4
+  interactionDuration: 0.3
+  useItemDuration: 0.5
   meleeHitbox: {fileID: 1740963522436496346}
+  hitboxDistance: 1.5
+  meleeDamage: 20
   _weaponObject: {fileID: 836138654105401596}
   _weaponScript: {fileID: 4061528865151626397}
   _weaponAim: {fileID: 6849549718662829352}
@@ -409,6 +416,7 @@ MonoBehaviour:
   attackPressed: 0
   interactPressed: 0
   useItemPressed: 0
+  runPressed: 0
   _playerTransform: {fileID: 4531211341117968607}
   _camera: {fileID: 0}
 --- !u!114 &4182261414977626514
