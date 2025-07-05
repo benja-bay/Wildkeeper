@@ -149,17 +149,8 @@ namespace Player
             // Handle item use input
             if (inputHandler.useItemPressed)
             {
-                var item = Inventory.GetFirstUsableItemOfType(ItemSO.ItemEffectType.KHeal);
-                if (item != null)
-                {
-                    UseItemState.SetItemToUse(item);
-                    _stateMachine.ChangeState(UseItemState);
-                    return; // Prevent using item and attacking in same frame
-                }
-                else
-                {
-                    Debug.Log("No items available.");
-                }
+                _stateMachine.ChangeState(UseItemState);
+                return;
             }
 
             // Automatically unlock melee attack if player owns the required item

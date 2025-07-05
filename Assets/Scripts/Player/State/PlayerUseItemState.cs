@@ -14,23 +14,25 @@ namespace Player.State
         private float _timer;                          // Internal timer for use duration
         private ItemSO _itemToUse;                     // The item to be consumed
 
-        public PlayerUseItemState(Player player, PlayerStateMachine stateMachine)
-            : base(player, stateMachine) { }
-
-        // Set the item that should be used when entering this state
-        public void SetItemToUse(ItemSO item)
-        {
-            _itemToUse = item;
-        }
-
+        public PlayerUseItemState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
         // Called once when this state becomes active
         public override void Enter()
         {
             base.Enter();
             _timer = _useDuration;
             Player.Move(Vector2.zero); // Prevent movement during item use
+            
+            _itemToUse = Player.Inventory.GetFirstUsableItemOfType(ItemSO.ItemEffectType.KHeal);
+            
+            if (_itemToUse == null)
+            {
+                Debug.LogWarning("No usable healing item found.");
+                StateMachine.ChangeState(Player.IdleState);
+                return;
+            }
 
             bool used = Player.Inventory.UseItem(_itemToUse, Player);
+            
             if (!used)
             {
                 Debug.LogWarning($"Failed to use item: {_itemToUse.itemName}");
