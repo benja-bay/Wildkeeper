@@ -21,8 +21,11 @@ namespace Player.State
         {
             base.Enter();
             _timer = _useDuration;
-            Player.Move(Vector2.zero); // Prevent movement during item use
-            
+
+            // Stop movement and play idle animation
+            Player.Move(Vector2.zero);
+            Player.PlayerAnimation.PlayIdle();
+
             _itemToUse = Player.Inventory.GetFirstUsableItemOfType(ItemSO.ItemEffectType.KHeal);
             
             if (_itemToUse == null)
