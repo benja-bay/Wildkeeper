@@ -52,9 +52,12 @@ namespace PlayerController
                 IsUsingMouse = true;
             }
 
-            // === Switch attack mode with mouse scroll wheel ===
+            // === Switch attack mode with mouse scroll wheel or controller buttons ===
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (scroll != 0f)
+            bool switchPositive = Input.GetButtonDown("SwitchAttackPositive"); // e.g., R1
+            bool switchNegative = Input.GetButtonDown("SwitchAttackNegative"); // e.g., L1
+
+            if (scroll != 0f || switchPositive || switchNegative)
             {
                 CurrentAttackMode = CurrentAttackMode == AttackMode.KMelee ? AttackMode.KRanged : AttackMode.KMelee;
             }
