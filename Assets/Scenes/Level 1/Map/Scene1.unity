@@ -48178,6 +48178,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1390787909}
+    - target: {fileID: 4818154827132350579, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
+      propertyPath: runPressed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5655322108261420855, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
       propertyPath: m_Name
       value: Player

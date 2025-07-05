@@ -3,65 +3,99 @@
 // Main Player class managing input, animation, movement, and states
 // ==============================
 
+using System.Collections.Generic;
 using Items;
-using Player.State;
+using PlayerController.State;
 using UnityEngine;
 using Weapons;
-using System.Collections.Generic;
-using Systems;
 
-namespace Player
+namespace PlayerController
 {
     public class Player : MonoBehaviour
     {
         // === Movement Configuration ===
-        [Header("Movement")]
-        public float moveSpeed = 3f; // Player movement speed
+        [Header("Movement Settings")]
+        public float moveSpeed = 3f;
+        
+        [Header("Run Settings")]
+        public float runSpeed = 6f;
+        public float runDuration = 2f;
+        public float runCooldown = 3f;
+        [HideInInspector] public float runCooldownTimer = 0f;
+
+        // === State Durations Configuration ===
+        [Header("State Durations")]
+        [Tooltip("Duration of the melee attack animation/effect")]
+        public float meleeAttackDuration = 0.4f;
+        
+        [Tooltip("Duration of interaction (e.g. pressing E)")]
+        public float interactionDuration = 0.3f;
+        
+        [Tooltip("Duration of using a consumable item")]
+        public float useItemDuration = 0.5f;
 
         // === Hitbox Configuration ===
-        [Header("Hitbox")]
-        public GameObject meleeHitbox; // Reference to melee hitbox
+        [Header("Hitbox Settings")]
+        public GameObject meleeHitbox;
+        [Tooltip("Distance from the player to the melee hitbox during attack/interact")]
+        public float hitboxDistance = 1f;
+        [Tooltip("Damage dealt by melee attacks")]
+        public int meleeDamage = 1;
 
         // === Attack Configuration ===
         [Header("Ranged")]
-        [SerializeField] private GameObject _weaponObject; // GameObject for ranged weapon visuals
-        [SerializeField] private WeaponScript _weaponScript; // Controls ranged attack logic
-        [SerializeField] private WeaponAim _weaponAim; // Controls aiming direction
-        [SerializeField] private ItemSO dartItem; // Item used as ammo for ranged attacks
-        public ItemSO DartItem => dartItem; // Public getter for dart ammo
+        [SerializeField] private GameObject _weaponObject;
+        [SerializeField] private WeaponScript _weaponScript;
+        [SerializeField] private WeaponAim _weaponAim;
+        [SerializeField] private ItemSO dartItem;
+        public ItemSO DartItem => dartItem;
 
-        // === Internal Component References ===
+        // === Internal References ===
         [HideInInspector] public bool isAttacking;
         [HideInInspector] public bool isShooting;
         [HideInInspector] public bool isInteracting;
-        [HideInInspector] public PlayerInputHandler inputHandler; // Handles player inputs
-        [HideInInspector] public Rigidbody2D rb2D; // Rigidbody for physics movement
-        [HideInInspector] public PlayerAnimation PlayerAnimation; // Manages animations
-        public Inventory Inventory { get; private set; } // Inventory system
+        [HideInInspector] public PlayerInputHandler inputHandler;
+        [HideInInspector] public Rigidbody2D rb2D;
+        [HideInInspector] public PlayerAnimation PlayerAnimation;
+        public Inventory Inventory { get; private set; }
 
         [Header("Unlock Items")]
-        [SerializeField] private ItemSO meleeUnlockItem; // Item that unlocks melee attack
-        [SerializeField] private ItemSO rangedUnlockItem; // Item that unlocks ranged attack
-        
+        [SerializeField] private ItemSO meleeUnlockItem;
+        [SerializeField] private ItemSO rangedUnlockItem;
+
         [Header("HUD References")]
         [SerializeField] private GameObject meleeIconHUD;
         [SerializeField] private GameObject rangedIconHUD;
 
-        // === State Instances ===
+        // === States ===
         [HideInInspector] public PlayerIdleState IdleState;
         [HideInInspector] public PlayerWalkState WalkState;
         [HideInInspector] public PlayerMeleAttackState MeleAttackState;
         [HideInInspector] public PlayerInteractState InteractState;
         [HideInInspector] public PlayerRangedAttackState RangedAttackState;
         [HideInInspector] public PlayerUseItemState UseItemState;
+        [HideInInspector] public PlayerDeathState DeathState;
+        [HideInInspector] public PlayerRunState RunState;
 
-        // === Private Components ===
         private Animator _animator;
-        private PlayerStateMachine _stateMachine; // Manages player state transitions
+        private PlayerStateMachine _stateMachine;
         private AttackMode _lastAttackMode;
 
-        // SINGLETON (WIP)
+        // === Aiming Direction ===
+        public Vector2 AimDirection { get; private set; } = Vector2.right;
+
+        /// <summary>
+        /// Sets the player's aim direction.
+        /// Use this instead of setting AimDirection directly.
+        /// </summary>
+        public void SetAimDirection(Vector2 direction)
+        {
+            AimDirection = direction;
+        }
+
+        // === Singleton ===
         public static Player Instance { get; private set; }
+
         void Awake()
         {
             if (Instance == null)
@@ -73,8 +107,8 @@ namespace Player
             {
                 Destroy(gameObject);
             }
-            
-            // Initialize core components
+
+            // Core components
             inputHandler = GetComponent<PlayerInputHandler>();
             rb2D = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
@@ -83,13 +117,15 @@ namespace Player
             _stateMachine = new PlayerStateMachine();
             Inventory = new Inventory();
 
-            // Initialize all player states with references
+            // States
             IdleState = new PlayerIdleState(this, _stateMachine);
             WalkState = new PlayerWalkState(this, _stateMachine);
             MeleAttackState = new PlayerMeleAttackState(this, _stateMachine, meleeHitbox);
             InteractState = new PlayerInteractState(this, _stateMachine, meleeHitbox);
             RangedAttackState = new PlayerRangedAttackState(this, _stateMachine, _weaponScript, _weaponAim);
             UseItemState = new PlayerUseItemState(this, _stateMachine);
+            DeathState = new PlayerDeathState(this, _stateMachine);
+            RunState = new PlayerRunState(this, _stateMachine);
         }
 
         void Start()
@@ -101,7 +137,6 @@ namespace Player
                 Inventory.Clear();
 
                 var itemsToLoad = new Dictionary<ItemSO, int>(GameManager.Instance.inventory);
-
                 foreach (var item in itemsToLoad)
                 {
                     Inventory.AddItem(item.Key, item.Value, false);
@@ -111,7 +146,48 @@ namespace Player
 
         void Update()
         {
-            // Handle switching between melee and ranged modes with mouse scroll
+            // === Update Run Cooldown Timer ===
+            if (runCooldownTimer > 0f)
+            {
+                runCooldownTimer -= Time.deltaTime;
+            }
+
+            // === Update Aim Direction ===
+            UpdateAimDirection();
+
+            HandleAttackModeSwitch();
+            EnsureWeaponHiddenIfUnavailable();
+
+            CheckUnlocks();
+
+            _stateMachine.CurrentState.HandleInput();
+            _stateMachine.CurrentState.LogicUpdate();
+        }
+
+        void FixedUpdate()
+        {
+            _stateMachine.CurrentState.PhysicsUpdate();
+        }
+
+        public void Move(Vector2 direction)
+        {
+            rb2D.velocity = direction * moveSpeed;
+        }
+
+        private void UpdateAimDirection()
+        {
+            if (inputHandler.IsUsingMouse)
+            {
+                SetAimDirection(inputHandler.MouseDirection);
+            }
+            else if (inputHandler.LastMovementDirection != Vector2.zero)
+            {
+                SetAimDirection(inputHandler.LastMovementDirection);
+            }
+        }
+
+        private void HandleAttackModeSwitch()
+        {
             if (_lastAttackMode != inputHandler.CurrentAttackMode)
             {
                 _lastAttackMode = inputHandler.CurrentAttackMode;
@@ -119,91 +195,46 @@ namespace Player
                 bool canUseRanged = RangedAttackState.IsUnlocked && Inventory.HasAmmo(DartItem);
                 _weaponObject.SetActive(_lastAttackMode == AttackMode.KRanged && canUseRanged);
             }
+        }
 
-            // Ensure weapon is hidden if ranged mode isn't usable
+        private void EnsureWeaponHiddenIfUnavailable()
+        {
             if (inputHandler.CurrentAttackMode == AttackMode.KRanged
                 && (!RangedAttackState.IsUnlocked || !Inventory.HasAmmo(DartItem)))
             {
                 _weaponObject.SetActive(false);
             }
+        }
 
-            // Handle attack input based on current mode and unlocks
-            if (inputHandler.attackPressed)
-            {
-                if (inputHandler.CurrentAttackMode == AttackMode.KMelee && MeleAttackState.IsUnlocked)
-                {
-                    _weaponObject.SetActive(false);
-                    _stateMachine.ChangeState(MeleAttackState);
-                }
-                else if (inputHandler.CurrentAttackMode == AttackMode.KRanged && RangedAttackState.IsUnlocked)
-                {
-                    _weaponObject.SetActive(true);
-                    _stateMachine.ChangeState(RangedAttackState);
-                }
-                else
-                {
-                    Debug.Log("Attack mode not unlocked.");
-                }
-            }
-
-            // Handle item use input
-            if (inputHandler.useItemPressed)
-            {
-                var item = Inventory.GetFirstUsableItemOfType(ItemSO.ItemEffectType.KHeal);
-                if (item != null)
-                {
-                    UseItemState.SetItemToUse(item);
-                    _stateMachine.ChangeState(UseItemState);
-                    return; // Prevent using item and attacking in same frame
-                }
-                else
-                {
-                    Debug.Log("No items available.");
-                }
-            }
-
-            // Automatically unlock melee attack if player owns the required item
+        private void CheckMeleeUnlock()
+        {
             if (!MeleAttackState.IsUnlocked && Inventory.GetItemCount(meleeUnlockItem) > 0)
             {
                 MeleAttackState.Unlock();
                 Debug.Log("Melee attack unlocked.");
-                if (meleeIconHUD != null)
-                {
-                    meleeIconHUD.SetActive(true);
-                }
+                meleeIconHUD?.SetActive(true);
             }
+        }
 
-            // Automatically unlock ranged attack if player owns the required item
+        private void CheckRangedUnlock()
+        {
             if (!RangedAttackState.IsUnlocked && Inventory.GetItemCount(rangedUnlockItem) > 0)
             {
                 RangedAttackState.Unlock();
                 Debug.Log("Ranged attack unlocked.");
-                if (rangedIconHUD != null)
-                {
-                    rangedIconHUD.SetActive(true);
-                }
+                rangedIconHUD?.SetActive(true);
             }
-
-            // Update current state logic and input
-            _stateMachine.CurrentState.HandleInput();
-            _stateMachine.CurrentState.LogicUpdate();
         }
 
-        void FixedUpdate()
+        private void CheckUnlocks()
         {
-            // Apply physics-based logic for current state
-            _stateMachine.CurrentState.PhysicsUpdate();
+            CheckMeleeUnlock();
+            CheckRangedUnlock();
         }
 
-        public void Move(Vector2 direction)
+        public void ChangeToDeathState()
         {
-            // Move the player using Rigidbody2D
-            rb2D.velocity = direction * moveSpeed;
-        }
-        
-        public void ChangeToIdleState()
-        {
-            _stateMachine.ChangeState(IdleState);
+            _stateMachine.ChangeState(DeathState);
         }
     }
 }

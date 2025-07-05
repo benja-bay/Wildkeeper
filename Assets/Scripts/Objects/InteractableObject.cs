@@ -9,7 +9,7 @@ namespace Objects
 {
     public class InteractableObject : MonoBehaviour, IInteractable
     {
-        public void Interact(Player.Player player)
+        public void Interact(PlayerController.Player player)
         {
             // === Handle interaction logic triggered by the player ===
             if (player == null)

@@ -1,44 +1,45 @@
 // ==============================
 // WeaponAim.cs
-// Controls weapon position and rotation to follow mouse direction
+// Controls weapon position and rotation to follow aim direction
 // ==============================
 
 using UnityEngine;
+using PlayerController;
 
 namespace Weapons
 {
     public class WeaponAim : MonoBehaviour
     {
         // === References ===
-        [SerializeField] private Transform _pivot; // Reference to the player's transform
+        [SerializeField] private Transform _pivot; // Player body pivot
 
         // === Configuration ===
-        [SerializeField] private float _distance; // Distance from player to weapon (e.g., for aiming)
+        [SerializeField] private float _distance = 1f; // Distance from player center to weapon
 
         private void Update()
         {
-            // Update weapon aim and position every frame
             UpdatePositionAndRotation();
         }
 
-        // Calculates direction to mouse, rotates the weapon, and positions it accordingly
+        // Updates weapon's position and rotation to match player's aim direction
         public void UpdatePositionAndRotation()
         {
-            // Get direction from weapon to mouse position in screen space
-            Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            var player = Player.Instance;
+            if (player == null || _pivot == null)
+            {
+                Debug.LogError("WeaponAim: Missing player reference or pivot transform.");
+                return;
+            }
 
-            // Apply rotation
+            Vector2 aimDir = player.AimDirection;
+            if (aimDir == Vector2.zero)
+                aimDir = Vector2.right; // Default to right
+
+            float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, angle);
+            transform.position = _pivot.position + (Vector3)(aimDir.normalized * _distance);
 
-            // Calculate direction from player to mouse in world space
-            Vector3 playerToMouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _pivot.position;
-            playerToMouseDir.z = 0;
-
-            // Position the weapon at a fixed distance in that direction
-            transform.position = _pivot.position + (_distance * playerToMouseDir.normalized);
-
-            // Flip weapon vertically if aiming left
+            // Vertical flip for left aim
             Vector3 localScale = Vector3.one;
             localScale.y = (angle > 90 || angle < -90) ? -1f : 1f;
             transform.localScale = localScale;

@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerWalkState : PlayerState
     {
@@ -22,19 +22,49 @@ namespace Player.State
         {
             // === Handle transitions based on input ===
 
-            // If attack input is pressed, switch to melee attack state
+            // Handle Use Item input
+            if (Player.inputHandler.useItemPressed)
+            {
+                StateMachine.ChangeState(Player.UseItemState);
+                return;
+            }
+
+            // Handle Interact input
+            if (Player.inputHandler.interactPressed)
+            {
+                StateMachine.ChangeState(Player.InteractState);
+                return;
+            }
+
+            // Handle Attack input
             if (Player.inputHandler.attackPressed)
             {
-                StateMachine.ChangeState(Player.MeleAttackState);
+                if (Player.inputHandler.CurrentAttackMode == AttackMode.KMelee && Player.MeleAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.MeleAttackState);
+                    return;
+                }
+                else if (Player.inputHandler.CurrentAttackMode == AttackMode.KRanged && Player.RangedAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.RangedAttackState);
+                    return;
+                }
+                else
+                {
+                    Debug.Log("Attack mode not unlocked.");
+                }
             }
-            else if (Player.inputHandler.interactPressed)
-            {
-                StateMachine.ChangeState(Player.InteractState); // ← NUEVA TRANSICIÓN
-            }
-            // If there's no movement input, switch to idle state
-            else if (Player.inputHandler.movementInput == Vector2.zero)
+
+            // Handle movement input
+            if (Player.inputHandler.movementInput == Vector2.zero)
             {
                 StateMachine.ChangeState(Player.IdleState);
+            }
+            
+            if (Player.inputHandler.runPressed && Player.RunState.CanRun() && Player.inputHandler.movementInput != Vector2.zero)
+            {
+                StateMachine.ChangeState(Player.RunState);
+                return;
             }
         }
 

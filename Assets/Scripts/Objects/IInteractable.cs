@@ -8,6 +8,6 @@ namespace Objects
     public interface IInteractable
     {
         // === Defines interaction behavior for an object ===
-        void Interact(Player.Player player);
+        void Interact(PlayerController.Player player);
     }
 }
