@@ -50,6 +50,28 @@ namespace Player.State
             // Keep the hitbox aligned to mouse direction
             _interactionHitbox.UpdatePositionAndRotation();
 
+            // Allow cancelling with item usage
+            if (Player.inputHandler.useItemPressed)
+            {
+                StateMachine.ChangeState(Player.UseItemState);
+                return;
+            }
+
+            // Allow cancelling with attack
+            if (Player.inputHandler.attackPressed)
+            {
+                if (Player.inputHandler.CurrentAttackMode == AttackMode.KMelee && Player.MeleAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.MeleAttackState);
+                    return;
+                }
+                else if (Player.inputHandler.CurrentAttackMode == AttackMode.KRanged && Player.RangedAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.RangedAttackState);
+                    return;
+                }
+            }
+
             // End interaction after timer runs out
             if (_interactionTimer <= 0f)
             {
