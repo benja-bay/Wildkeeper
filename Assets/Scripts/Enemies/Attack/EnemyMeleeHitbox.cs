@@ -25,7 +25,7 @@ namespace Enemies
 
         // Referencias al jugador y su salud
         private Transform _playerTransform;
-        private Player.PlayerHealth _playerHealth;
+        private PlayerController.PlayerHealth _playerHealth;
 
         // Indica si el jugador está dentro del rango de ataque
         private bool _isPlayerInRange;
@@ -39,7 +39,7 @@ namespace Enemies
                 if (player != null)
                 {
                     _playerTransform = player.transform;
-                    _playerHealth = player.GetComponent<Player.PlayerHealth>();
+                    _playerHealth = player.GetComponent<PlayerController.PlayerHealth>();
                 }
             }
 
@@ -69,7 +69,7 @@ namespace Enemies
 
                 // Asegura tener una referencia válida a la salud del jugador
                 if (_playerHealth == null)
-                    _playerHealth = other.GetComponent<Player.PlayerHealth>();
+                    _playerHealth = other.GetComponent<PlayerController.PlayerHealth>();
 
                 // Aplica daño si el cooldown se ha cumplido
                 if (Time.time - _lastDamageTime >= DamageCooldown)

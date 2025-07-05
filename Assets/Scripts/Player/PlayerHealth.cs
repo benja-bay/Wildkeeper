@@ -7,7 +7,7 @@ using Systems;
 using UnityEngine;
 using System.Collections;
 
-namespace Player
+namespace PlayerController
 {
     public class PlayerHealth : Health
     {

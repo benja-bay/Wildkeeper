@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerMeleAttackState : PlayerState
     {
@@ -48,8 +48,8 @@ namespace Player.State
             _meleeHitbox.SetActive(true);
             _attackTimer = _attackDuration;
 
-            Vector2 mouseDirection = Player.inputHandler.MouseDirection;
-            Player.PlayerAnimation.PlayMeleeAttack(mouseDirection);
+            // Use the player's current aim direction for animation
+            Player.PlayerAnimation.PlayMeleeAttack(Player.AimDirection);
         }
 
         // Called every frame while this state is active

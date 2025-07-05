@@ -3,7 +3,7 @@
 // Interactable healing object that restores a percentage of player's health once
 // ==============================
 
-using Player;
+using PlayerController;
 using UnityEngine;
 
 namespace Objects
@@ -42,7 +42,7 @@ namespace Objects
             }
         }
 
-        public void Interact(Player.Player player)
+        public void Interact(PlayerController.Player player)
         {
             if (GameManager.Instance != null && GameManager.Instance.IsObjectUsed(objectID))
             {

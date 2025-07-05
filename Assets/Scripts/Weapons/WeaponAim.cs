@@ -1,9 +1,10 @@
 // ==============================
 // WeaponAim.cs
-// Controls weapon position and rotation to follow mouse direction
+// Controls weapon position and rotation to follow aim direction
 // ==============================
 
 using UnityEngine;
+using PlayerController;
 
 namespace Weapons
 {
@@ -21,22 +22,31 @@ namespace Weapons
             UpdatePositionAndRotation();
         }
 
-        // Calculates direction to mouse, rotates the weapon, and positions it accordingly
+        // Calculates direction from player to aim direction, rotates the weapon, and positions it accordingly
         public void UpdatePositionAndRotation()
         {
-            // Get direction from weapon to mouse position in screen space
-            Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            if (PlayerController.Player.Instance == null || _pivot == null)
+            {
+                Debug.LogError("WeaponAim: Missing player reference or pivot.");
+                return;
+            }
+
+            // Use the player's current aim direction
+            Vector2 aimDir = PlayerController.Player.Instance.AimDirection;
+            if (aimDir == Vector2.zero)
+            {
+                // Default to right if idle (avoids NaN angles)
+                aimDir = Vector2.right;
+            }
+
+            // Calculate angle from direction
+            float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
 
             // Apply rotation
             transform.eulerAngles = new Vector3(0, 0, angle);
 
-            // Calculate direction from player to mouse in world space
-            Vector3 playerToMouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _pivot.position;
-            playerToMouseDir.z = 0;
-
             // Position the weapon at a fixed distance in that direction
-            transform.position = _pivot.position + (_distance * playerToMouseDir.normalized);
+            transform.position = _pivot.position + (Vector3)(aimDir.normalized * _distance);
 
             // Flip weapon vertically if aiming left
             Vector3 localScale = Vector3.one;

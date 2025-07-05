@@ -3,7 +3,7 @@
 // Handles transitions between different player states
 // ==============================
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerStateMachine
     {

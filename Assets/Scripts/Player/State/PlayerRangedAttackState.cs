@@ -6,7 +6,7 @@
 using UnityEngine;
 using Weapons;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerRangedAttackState : PlayerState
     {

@@ -3,14 +3,13 @@
 // Main Player class managing input, animation, movement, and states
 // ==============================
 
+using System.Collections.Generic;
 using Items;
-using Player.State;
+using PlayerController.State;
 using UnityEngine;
 using Weapons;
-using System.Collections.Generic;
-using Systems;
 
-namespace Player
+namespace PlayerController
 {
     public class Player : MonoBehaviour
     {
@@ -42,7 +41,7 @@ namespace Player
         [Header("Unlock Items")]
         [SerializeField] private ItemSO meleeUnlockItem; // Item that unlocks melee attack
         [SerializeField] private ItemSO rangedUnlockItem; // Item that unlocks ranged attack
-        
+
         [Header("HUD References")]
         [SerializeField] private GameObject meleeIconHUD;
         [SerializeField] private GameObject rangedIconHUD;
@@ -61,6 +60,9 @@ namespace Player
         private PlayerStateMachine _stateMachine; // Manages player state transitions
         private AttackMode _lastAttackMode;
 
+        // === Aiming Direction ===
+        public Vector2 AimDirection { get; private set; } = Vector2.right; // Default aim direction
+
         // SINGLETON (WIP)
         public static Player Instance { get; private set; }
 
@@ -75,7 +77,7 @@ namespace Player
             {
                 Destroy(gameObject);
             }
-            
+
             // Initialize core components
             inputHandler = GetComponent<PlayerInputHandler>();
             rb2D = GetComponent<Rigidbody2D>();
@@ -114,6 +116,9 @@ namespace Player
 
         void Update()
         {
+            // === Update aiming direction based on input mode ===
+            UpdateAimDirection();
+
             HandleAttackModeSwitch();
             EnsureWeaponHiddenIfUnavailable();
 
@@ -135,6 +140,25 @@ namespace Player
             rb2D.velocity = direction * moveSpeed;
         }
 
+        // === New Aiming Direction Logic with Input Mode Awareness ===
+        private void UpdateAimDirection()
+        {
+            if (inputHandler.IsUsingMouse)
+            {
+                // Mouse aiming: always follow mouse position
+                AimDirection = inputHandler.MouseDirection;
+            }
+            else
+            {
+                // Gamepad/keyboard aiming: use last movement direction
+                if (inputHandler.LastMovementDirection != Vector2.zero)
+                {
+                    AimDirection = inputHandler.LastMovementDirection;
+                }
+                // Else, keep existing AimDirection (idle)
+            }
+        }
+
         // === Refactored methods ===
 
         private void HandleAttackModeSwitch()
@@ -154,26 +178,6 @@ namespace Player
                 && (!RangedAttackState.IsUnlocked || !Inventory.HasAmmo(DartItem)))
             {
                 _weaponObject.SetActive(false);
-            }
-        }
-
-        private void HandleAttackInput()
-        {
-            if (!inputHandler.attackPressed) return;
-
-            if (inputHandler.CurrentAttackMode == AttackMode.KMelee && MeleAttackState.IsUnlocked)
-            {
-                _weaponObject.SetActive(false);
-                _stateMachine.ChangeState(MeleAttackState);
-            }
-            else if (inputHandler.CurrentAttackMode == AttackMode.KRanged && RangedAttackState.IsUnlocked)
-            {
-                _weaponObject.SetActive(true);
-                _stateMachine.ChangeState(RangedAttackState);
-            }
-            else
-            {
-                Debug.Log("Attack mode not unlocked.");
             }
         }
 
@@ -208,7 +212,7 @@ namespace Player
             CheckMeleeUnlock();
             CheckRangedUnlock();
         }
-        
+
         public void ChangeToDeathState()
         {
             _stateMachine.ChangeState(DeathState);

@@ -28,7 +28,7 @@ namespace Objects
             }
         }
 
-        public void Interact(Player.Player player)
+        public void Interact(PlayerController.Player player)
         {
             // === Prevent multiple activations of the checkpoint ===
             if (_hasBeenUsed)

@@ -37,7 +37,7 @@ public class EnemyProjectile : MonoBehaviour
         // Si colisiona con el jugador, aplica daño y se destruye
         if (other.CompareTag("Player"))
         {
-            var health = other.GetComponent<Player.PlayerHealth>();
+            var health = other.GetComponent<PlayerController.PlayerHealth>();
             if (health != null)
             {
                 health.TakeDamage(Damage);

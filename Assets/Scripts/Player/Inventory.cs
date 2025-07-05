@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Items;
 using UnityEngine;
 
-namespace Player
+namespace PlayerController
 {
     public class Inventory
     {

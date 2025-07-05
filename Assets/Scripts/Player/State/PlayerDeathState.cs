@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerDeathState : PlayerState
     {
