@@ -1758,6 +1758,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseNote
       objectReference: {fileID: 0}
+    - target: {fileID: 9038101577075239422, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
+      propertyPath: note
+      value: 
+      objectReference: {fileID: 164442558}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
