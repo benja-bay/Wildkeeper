@@ -9,5 +9,6 @@ namespace Objects
     {
         // === Defines interaction behavior for an object ===
         void Interact(Player.Player player);
+
     }
 }
