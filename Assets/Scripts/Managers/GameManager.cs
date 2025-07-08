@@ -116,10 +116,9 @@ namespace Managers
         // === Llamado por SceneSpawnManager cuando se haya spawneado al jugador ===
         public void FinalizeRespawn()
         {
-            if (!isRespawning)
-                return; // ← solo restaurar si se está respawneando
+            if (!isRespawning || !HasCheckpoint()) return;
 
-            isRespawning = false; // ← limpiar flag después
+            isRespawning = false;
 
             Player player = GameObject.FindWithTag("Player")?.GetComponent<Player>();
             if (player == null) return;
@@ -127,9 +126,12 @@ namespace Managers
             RestoreCheckpoint(player);
             RestoreInteractables();
 
+            var health = player.GetComponent<PlayerHealth>();
+            health.enabled = true;
+            health.Revive();
+
             player.inputHandler.enabled = true;
             player.enabled = true;
-            player.GetComponent<PlayerHealth>().enabled = true;
             player.ChangeToIdleState();
         }
 
@@ -139,13 +141,21 @@ namespace Managers
             if (!HasCheckpoint()) return;
 
             var health = player.GetComponent<PlayerHealth>();
-            health.SetMaxHealth(savedHealth);
-            health.Regenerate(savedHealth);
+            health.SetMaxHealth(savedHealth > 0 ? savedHealth : maxHealth);
+            health.Regenerate(savedHealth > 0 ? savedHealth : maxHealth);
 
             player.Inventory.Clear();
-            foreach (var kvp in savedInventory)
+
+            if (savedInventory.Count > 0)
             {
-                player.Inventory.AddItem(kvp.Key, kvp.Value);
+                foreach (var kvp in savedInventory)
+                {
+                    player.Inventory.AddItem(kvp.Key, kvp.Value);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("RestoreCheckpoint: saved inventory is empty.");
             }
 
             Debug.Log($"Restored to checkpoint '{currentCheckpointID}' in scene '{savedCheckpointScene}'");

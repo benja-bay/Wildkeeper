@@ -53,6 +53,12 @@ namespace PlayerController
                 // Esperamos y luego respawneamos
                 StartCoroutine(RespawnAfterDelay(2f));
             }
+            
+            if (_currentHealth <= 0 && !GameManager.Instance.HasCheckpoint())
+            {
+                Debug.LogWarning("Player died with no checkpoint. Respawn disabled.");
+                return;
+            }
 
             enabled = false;
         }
@@ -72,6 +78,14 @@ namespace PlayerController
                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
                 );
             }
+        }
+        
+        public override void Revive()
+        {
+            base.Revive();
+
+            // Podés agregar animaciones de revivir o reinicialización aquí
+            Debug.Log("Player has been revived from PlayerHealth.");
         }
     }
 }
