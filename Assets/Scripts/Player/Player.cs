@@ -81,6 +81,8 @@ namespace PlayerController
         private Animator _animator;
         private PlayerStateMachine _stateMachine;
         private AttackMode _lastAttackMode;
+        
+        private List<IPlayerObserver> observers = new();
 
         // === Aiming Direction ===
         public Vector2 AimDirection { get; private set; } = Vector2.right;
@@ -212,7 +214,11 @@ namespace PlayerController
             {
                 MeleAttackState.Unlock();
                 Debug.Log("Melee attack unlocked.");
-                meleeIconHUD?.SetActive(true);
+
+                foreach (var observer in observers)
+                {
+                    observer.OnMeleeUnlocked();
+                }
             }
         }
 
@@ -222,7 +228,11 @@ namespace PlayerController
             {
                 RangedAttackState.Unlock();
                 Debug.Log("Ranged attack unlocked.");
-                rangedIconHUD?.SetActive(true);
+
+                foreach (var observer in observers)
+                {
+                    observer.OnRangedUnlocked();
+                }
             }
         }
 
@@ -240,6 +250,12 @@ namespace PlayerController
         public void ChangeToIdleState()
         {
             _stateMachine.ChangeState(IdleState);
+        }
+
+        public void RegisterObserver(IPlayerObserver observer)
+        {
+            if (!observers.Contains(observer))
+                observers.Add(observer);
         }
     }
 }
