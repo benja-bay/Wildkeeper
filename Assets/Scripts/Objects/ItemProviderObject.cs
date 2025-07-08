@@ -87,10 +87,16 @@ namespace Objects
                 itemMessages.Add($"{amount}x {entry.item.itemName}");
             }
 
-            // Mostrar mensaje en el HUD
-            if (itemMessages.Count > 0)
+            // Mostrar mensaje en el HUD sin cantidades
+            if (items.Length > 0)
             {
-                string fullMessage = "Obtuviste: " + string.Join(", ", itemMessages);
+                List<string> itemNames = new();
+                foreach (var entry in items)
+                {
+                    itemNames.Add(entry.item.itemName);
+                }
+
+                string fullMessage = "Obtuviste: " + string.Join(", ", itemNames);
                 InteractionUIManager.Instance?.ShowPromptTemporary(fullMessage, 2f);
             }
 
