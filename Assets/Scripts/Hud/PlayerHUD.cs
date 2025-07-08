@@ -18,18 +18,25 @@ namespace HUD
             StartCoroutine(RegisterToPlayerWhenAvailable());
         }
 
-        private System.Collections.IEnumerator RegisterToPlayerWhenAvailable()
+        private IEnumerator RegisterToPlayerWhenAvailable()
         {
             while (player == null)
             {
                 player = FindObjectOfType<PlayerController.Player>();
-                yield return null; // Espera un frame hasta que el player aparezca
+                yield return null;
             }
 
             if (!isRegistered && player != null)
             {
                 player.RegisterObserver(this);
                 isRegistered = true;
+
+                // Verificar el estado actual del player y actualizar íconos si corresponde
+                if (player.IsMeleeUnlocked)
+                    OnMeleeUnlocked();
+
+                if (player.IsRangedUnlocked)
+                    OnRangedUnlocked();
             }
         }
 

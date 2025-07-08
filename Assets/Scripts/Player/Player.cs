@@ -257,5 +257,7 @@ namespace PlayerController
             if (!observers.Contains(observer))
                 observers.Add(observer);
         }
+        public bool IsMeleeUnlocked => MeleAttackState.IsUnlocked;
+        public bool IsRangedUnlocked => RangedAttackState.IsUnlocked;
     }
 }
