@@ -24,6 +24,8 @@ namespace Objects
         [SerializeField] private string objectID;
         
         private SpriteRenderer _spriteRenderer; // Reference to the current SpriteRenderer
+        
+        public string ObjectID => objectID;
 
         private void Awake()
         {

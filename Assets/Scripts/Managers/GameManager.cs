@@ -3,6 +3,7 @@ using Items;
 using UnityEngine;
 using PlayerController;
 using UnityEngine.SceneManagement;
+using Objects; // ← para acceder a IInteractable
 
 namespace Managers
 {
@@ -24,6 +25,9 @@ namespace Managers
         private string savedCheckpointScene = null;
         private Dictionary<ItemSO, int> savedInventory = new();
         private int savedHealth = 0;
+        private HashSet<string> savedUsedObjectIDs = new();
+        
+        private bool isRespawning = false;
 
         private void Awake()
         {
@@ -83,7 +87,7 @@ namespace Managers
             return remoteObjectStates.ContainsKey(objectID) ? remoteObjectStates[objectID] : null;
         }
 
-        // === Guarda checkpoint con escena, spawn ID, salud, inventario ===
+        // === Guarda checkpoint con escena, spawn ID, salud, inventario y objetos usados ===
         public void SaveCheckpoint(string spawnID, Vector3 position, int health, Inventory inventory)
         {
             currentCheckpointID = spawnID;
@@ -91,6 +95,9 @@ namespace Managers
             savedCheckpointScene = SceneManager.GetActiveScene().name;
             savedHealth = health;
             savedInventory = inventory.CloneItemData();
+
+            // Guardar objetos usados al momento del checkpoint
+            savedUsedObjectIDs = new HashSet<string>(_usedObjectIDs);
         }
 
         public bool HasCheckpoint() => savedCheckpointPosition.HasValue && !string.IsNullOrEmpty(savedCheckpointScene);
@@ -100,20 +107,25 @@ namespace Managers
         {
             if (!HasCheckpoint()) return;
 
-            // Le decimos al SceneSpawnManager que use este spawn point
-            SceneSpawnManager.Instance?.SetNextSpawnPoint(currentCheckpointID);
+            isRespawning = true; // ← importante
 
-            // Cargamos la escena del checkpoint
+            SceneSpawnManager.Instance?.SetNextSpawnPoint(currentCheckpointID);
             SceneManager.LoadScene(savedCheckpointScene);
         }
 
         // === Llamado por SceneSpawnManager cuando se haya spawneado al jugador ===
         public void FinalizeRespawn()
         {
+            if (!isRespawning)
+                return; // ← solo restaurar si se está respawneando
+
+            isRespawning = false; // ← limpiar flag después
+
             Player player = GameObject.FindWithTag("Player")?.GetComponent<Player>();
             if (player == null) return;
 
             RestoreCheckpoint(player);
+            RestoreInteractables();
 
             player.inputHandler.enabled = true;
             player.enabled = true;
@@ -137,6 +149,29 @@ namespace Managers
             }
 
             Debug.Log($"Restored to checkpoint '{currentCheckpointID}' in scene '{savedCheckpointScene}'");
+        }
+
+        // === Restaura objetos interactuables que NO fueron usados al momento del checkpoint ===
+        private void RestoreInteractables()
+        {
+            // Buscar todos los MonoBehaviours activos e inactivos
+            MonoBehaviour[] allBehaviours = GameObject.FindObjectsOfType<MonoBehaviour>(true);
+
+            foreach (var mb in allBehaviours)
+            {
+                if (mb is IInteractable interactable)
+                {
+                    string objID = interactable.ObjectID;
+                    if (string.IsNullOrEmpty(objID)) continue; // No persistente → ignorar
+
+                    if (!savedUsedObjectIDs.Contains(objID))
+                    {
+                        mb.gameObject.SetActive(true); // Restaurar si no fue usado al guardar
+                    }
+                }
+            }
+
+            Debug.Log("Interactables restored based on saved checkpoint state.");
         }
     }
 }

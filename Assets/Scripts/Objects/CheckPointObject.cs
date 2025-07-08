@@ -48,5 +48,6 @@ namespace Objects
                 _spriteRenderer.sprite = usedSprite;
             }
         }
+        public string ObjectID => null;
     }
 }

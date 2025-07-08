@@ -139,5 +139,7 @@ namespace Objects
                 System.Array.Resize(ref dialogueData.autoProgressLines, dialogueData.dialogueLines.Length);
             }
         }
+        
+        public string ObjectID => null;
     }
 }

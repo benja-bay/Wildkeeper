@@ -12,6 +12,7 @@ namespace Objects
 
         [Header("Object ID")]
         [SerializeField] private string objectID;
+        public string ObjectID => objectID;
 
         [Header("Animator")]
         [SerializeField] private Animator animator;
