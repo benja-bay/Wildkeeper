@@ -48,27 +48,30 @@ namespace PlayerController
 
             if (TryGetComponent(out Player player))
             {
-                if (GameManager.Instance.HasCheckpoint())
-                {
-                    GameManager.Instance.RestoreCheckpoint(player);
-                    player.ChangeToDeathState(); // Optional: puede cambiar a Idle directamente
-                }
-                else
-                {
-                    player.ChangeToDeathState();
-                    StartCoroutine(RestartSceneAfterDelay(2f));
-                }
+                player.ChangeToDeathState();
+
+                // Esperamos y luego respawneamos
+                StartCoroutine(RespawnAfterDelay(2f));
             }
 
             enabled = false;
         }
 
-        private IEnumerator RestartSceneAfterDelay(float delay)
+        private IEnumerator RespawnAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(
-                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
-            );
+
+            if (GameManager.Instance.HasCheckpoint())
+            {
+                GameManager.Instance.RespawnPlayer();
+            }
+            else
+            {
+                // Si no hay checkpoint, reiniciamos escena
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+                );
+            }
         }
     }
 }

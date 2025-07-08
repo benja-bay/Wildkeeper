@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Items;
 using UnityEngine;
-using PlayerController; 
+using PlayerController;
+using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -17,10 +18,12 @@ namespace Managers
         public Dictionary<ItemSO, int> inventory = new();
         private Dictionary<string, bool> remoteObjectStates = new();
 
+        // === Checkpoint Data ===
         private Vector3? savedCheckpointPosition = null;
         private string currentCheckpointID = null;
-        private int savedHealth = 0;
+        private string savedCheckpointScene = null;
         private Dictionary<ItemSO, int> savedInventory = new();
+        private int savedHealth = 0;
 
         private void Awake()
         {
@@ -72,7 +75,7 @@ namespace Managers
 
         public void NotifyBossDeath()
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
 
         public bool? GetRemoteObjectState(string objectID)
@@ -80,21 +83,49 @@ namespace Managers
             return remoteObjectStates.ContainsKey(objectID) ? remoteObjectStates[objectID] : null;
         }
 
-        public void SaveCheckpoint(string id, Vector3 position, int health, Inventory inventory)
+        // === Guarda checkpoint con escena, spawn ID, salud, inventario ===
+        public void SaveCheckpoint(string spawnID, Vector3 position, int health, Inventory inventory)
         {
-            currentCheckpointID = id;
+            currentCheckpointID = spawnID;
             savedCheckpointPosition = position;
+            savedCheckpointScene = SceneManager.GetActiveScene().name;
             savedHealth = health;
-            savedInventory = inventory.CloneItemData(); 
+            savedInventory = inventory.CloneItemData();
         }
 
-        public bool HasCheckpoint() => savedCheckpointPosition.HasValue;
+        public bool HasCheckpoint() => savedCheckpointPosition.HasValue && !string.IsNullOrEmpty(savedCheckpointScene);
 
+        // === Controla el respawn después de morir ===
+        public void RespawnPlayer()
+        {
+            if (!HasCheckpoint()) return;
+
+            // Le decimos al SceneSpawnManager que use este spawn point
+            SceneSpawnManager.Instance?.SetNextSpawnPoint(currentCheckpointID);
+
+            // Cargamos la escena del checkpoint
+            SceneManager.LoadScene(savedCheckpointScene);
+        }
+
+        // === Llamado por SceneSpawnManager cuando se haya spawneado al jugador ===
+        public void FinalizeRespawn()
+        {
+            Player player = GameObject.FindWithTag("Player")?.GetComponent<Player>();
+            if (player == null) return;
+
+            RestoreCheckpoint(player);
+
+            player.inputHandler.enabled = true;
+            player.enabled = true;
+            player.GetComponent<PlayerHealth>().enabled = true;
+            player.ChangeToIdleState();
+        }
+
+        // === Aplica vida e inventario guardados ===
         public void RestoreCheckpoint(Player player)
         {
             if (!HasCheckpoint()) return;
 
-            player.transform.position = savedCheckpointPosition.Value;
             var health = player.GetComponent<PlayerHealth>();
             health.SetMaxHealth(savedHealth);
             health.Regenerate(savedHealth);
@@ -105,7 +136,7 @@ namespace Managers
                 player.Inventory.AddItem(kvp.Key, kvp.Value);
             }
 
-            Debug.Log($"Restored to checkpoint '{currentCheckpointID}'");
+            Debug.Log($"Restored to checkpoint '{currentCheckpointID}' in scene '{savedCheckpointScene}'");
         }
     }
 }

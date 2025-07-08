@@ -20,8 +20,17 @@ namespace Objects
         {
             if (player == null || GameManager.Instance == null) return;
 
-            GameManager.Instance.SaveCheckpoint(checkpointID, player.transform.position, player.GetComponent<PlayerHealth>().CurrentHealth, player.Inventory);
-            Debug.Log($"Checkpoint '{checkpointID}' activated!");
+            var health = player.GetComponent<PlayerHealth>();
+            Vector3 pos = player.transform.position;
+
+            GameManager.Instance.SaveCheckpoint(
+                checkpointID,
+                pos,
+                health.CurrentHealth,
+                player.Inventory
+            );
+
+            Debug.Log($"Checkpoint '{checkpointID}' activated in scene '{UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}'!");
         }
     }
 }
