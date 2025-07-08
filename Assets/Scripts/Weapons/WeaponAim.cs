@@ -44,5 +44,11 @@ namespace Weapons
             localScale.y = (angle > 90 || angle < -90) ? -1f : 1f;
             transform.localScale = localScale;
         }
+
+        // === Allows external assignment of the pivot reference ===
+        public void SetPivot(Transform pivot)
+        {
+            _pivot = pivot;
+        }
     }
 }

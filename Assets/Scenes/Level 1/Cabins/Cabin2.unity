@@ -795,8 +795,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a4ea380779078384d9e04faed64dd75d, type: 2}
     - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
+      propertyPath: items.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 30c69d1338fcec340ba727f6fea84982, type: 2}
+    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
+      propertyPath: items.Array.data[2].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 29043914075957840949e1fcd6737264, type: 2}
+    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
       propertyPath: items.Array.data[0].fixedQuantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
+      propertyPath: items.Array.data[1].fixedQuantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856744940925295254, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
+      propertyPath: items.Array.data[2].fixedQuantity
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5570859099633080184, guid: bb7f0c450bda07a4b9ba0da219837058, type: 3}
       propertyPath: m_Name

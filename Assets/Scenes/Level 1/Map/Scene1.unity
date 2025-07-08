@@ -3411,6 +3411,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1119439683 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2386255356258706893, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
+  m_PrefabInstance: {fileID: 1996874513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1285499605
 GameObject:
   m_ObjectHideFlags: 0
@@ -49285,21 +49290,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4606721064450143992, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4818154827132350579, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1390787909}
     - target: {fileID: 4818154827132350579, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
-      propertyPath: runPressed
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: _aimPivot
+      value: 
+      objectReference: {fileID: 1119439683}
     - target: {fileID: 5655322108261420855, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957870320448934737, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
+      propertyPath: moveSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6957870320448934737, guid: 5f4b1eb2d2208ee42b04d409d30fc617, type: 3}
       propertyPath: meleeIconHUD

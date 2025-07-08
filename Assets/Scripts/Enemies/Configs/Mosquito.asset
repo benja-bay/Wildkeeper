@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Mosquito
   m_EditorClassIdentifier: 
   _name: Mosquito
-  _health: 40
+  _health: 60
   _speed: 3
-  _damage: 20
+  _damage: 15
   _attackCooldown: 0.5
-  _attackDistance: 8
+  _attackDistance: 9
   _attackType: 01000000
   _startState: 0
   _onVisionState: 02000000
   _prefab: {fileID: 4917273793354472290, guid: 68e74f0060ca0e741b704005f30ad903, type: 3}
-  _visionDistance: 5
+  _visionDistance: 4
   _patrolWaitTime: 2
   _projectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
   _projectileSpeed: 20
