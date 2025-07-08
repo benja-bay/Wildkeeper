@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: AndyDialogue
   m_EditorClassIdentifier: 
   npcName: Andy
-  npcPortrait: {fileID: 21300000, guid: 65c3b2f88e87b664092bcec7a03d654b, type: 3}
+  npcPortrait: {fileID: 21300000, guid: a3c564ac55cbef843b6ba044b04b37f9, type: 3}
   dialogueLines:
   - Well I hope you had a good first day Agus!
   - Oh and before I forget, you should get your baton before I go, it is on the cabin
     at the end of the path
-  - 'It''s for authotized personnel only so grab my key, its here inside my cabin,
-    on my desk, dont take to long! '
-  - tomorrow well lear how to use de dart pistol
+  - It's for authotized personnel only so grab my key, It's here on the desk inside
+    my cabin
+  - And tomorrow we'll learn how to use the tranquilizer gun, in the meantime it's
+    going to be on Morena's cabin.
+  - "Now go get your baton so we can go home, it\xB4s getting late already."
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
   voicePitch: 1
-  autoProgressLines: 010000
-  autoProgressDelay: 1.5
+  autoProgressLines: 0100000000
+  autoProgressDelay: 2
