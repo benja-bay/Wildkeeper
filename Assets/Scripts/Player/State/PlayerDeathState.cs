@@ -16,16 +16,11 @@ namespace PlayerController.State
         {
             base.Enter();
 
-            // Stop movement
             Player.Move(Vector2.zero);
-
-            // Ensure idle animation so movement stops visually
             Player.PlayerAnimation.PlayIdle();
 
-            // Disable player input so no new commands come in
             Player.inputHandler.enabled = false;
 
-            // Play death animation trigger
             Animator anim = Player.GetComponent<Animator>();
             if (anim != null)
             {
@@ -53,7 +48,18 @@ namespace PlayerController.State
         public override void Exit()
         {
             base.Exit();
-            // ToDo exit, respawn logic
+
+            // Rehabilitar input
+            Player.inputHandler.enabled = true;
+
+            // Resetear el trigger para evitar que se quede pegado
+            Animator anim = Player.GetComponent<Animator>();
+            if (anim != null)
+            {
+                anim.ResetTrigger("Die");
+            }
+
+            Debug.Log("PlayerDeathState: Player exited, controls re-enabled.");
         }
     }
 }

@@ -64,7 +64,7 @@ public class SceneSpawnManager : MonoBehaviour
                         player.transform.position = sp.transform.position;
 
                         // Respawn final se maneja desde GameManager (si fue una muerte)
-                        GameManager.Instance?.FinalizeRespawn();
+                        Instance.StartCoroutine(WaitAndFinalizeRespawn());
                         return;
                     }
                 }
@@ -73,5 +73,12 @@ public class SceneSpawnManager : MonoBehaviour
             // Log a warning if no matching spawn point was found 
             Debug.LogWarning($"No se encontro un SpawnPoint con ID '{nextSpawnPointID}' en la escena '{scene.name}'.");
         }
+    }
+    
+    private System.Collections.IEnumerator WaitAndFinalizeRespawn()
+    {
+        yield return null; // ← Espera un frame
+
+        GameManager.Instance?.FinalizeRespawn();
     }
 }
