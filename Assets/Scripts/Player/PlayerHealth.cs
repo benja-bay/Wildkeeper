@@ -6,6 +6,7 @@
 using Systems;
 using UnityEngine;
 using System.Collections;
+using Managers;
 
 namespace PlayerController
 {
@@ -47,12 +48,19 @@ namespace PlayerController
 
             if (TryGetComponent(out Player player))
             {
-                player.ChangeToDeathState();
+                if (GameManager.Instance.HasCheckpoint())
+                {
+                    GameManager.Instance.RestoreCheckpoint(player);
+                    player.ChangeToDeathState(); // Optional: puede cambiar a Idle directamente
+                }
+                else
+                {
+                    player.ChangeToDeathState();
+                    StartCoroutine(RestartSceneAfterDelay(2f));
+                }
             }
 
             enabled = false;
-
-            StartCoroutine(RestartSceneAfterDelay(2f));
         }
 
         private IEnumerator RestartSceneAfterDelay(float delay)

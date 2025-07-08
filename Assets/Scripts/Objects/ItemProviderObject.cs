@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using HUD;
 using UnityEngine;
 using Items;
+using Managers;
 
 namespace Objects
 {

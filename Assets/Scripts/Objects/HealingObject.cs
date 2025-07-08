@@ -3,6 +3,7 @@
 // Interactable healing object that restores a percentage of player's health once
 // ==============================
 
+using Managers;
 using PlayerController;
 using UnityEngine;
 
