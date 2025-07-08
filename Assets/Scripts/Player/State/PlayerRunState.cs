@@ -33,16 +33,33 @@ namespace PlayerController.State
                 return;
             }
 
+            // === Use item cancels run ===
             if (Player.inputHandler.useItemPressed)
             {
                 StateMachine.ChangeState(Player.UseItemState);
                 return;
             }
 
+            // === Interact cancels run ===
             if (Player.inputHandler.interactPressed)
             {
                 StateMachine.ChangeState(Player.InteractState);
                 return;
+            }
+
+            // === Attack interrupts run ===
+            if (Player.inputHandler.attackPressed)
+            {
+                if (Player.inputHandler.CurrentAttackMode == AttackMode.KMelee && Player.MeleAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.MeleAttackState);
+                    return;
+                }
+                else if (Player.inputHandler.CurrentAttackMode == AttackMode.KRanged && Player.RangedAttackState.IsUnlocked)
+                {
+                    StateMachine.ChangeState(Player.RangedAttackState);
+                    return;
+                }
             }
         }
 
