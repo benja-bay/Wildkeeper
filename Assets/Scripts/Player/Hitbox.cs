@@ -68,6 +68,8 @@ namespace PlayerController
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_player == null) return;
+            
+            Debug.Log($"Interactuando con: {other.gameObject.name}, Tag: {other.tag}, Hitbox activa: {gameObject.activeSelf}");
 
             switch (_mode)
             {

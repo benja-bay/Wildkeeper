@@ -83,11 +83,10 @@ namespace PlayerController
 
         // === Aiming Direction ===
         public Vector2 AimDirection { get; private set; } = Vector2.right;
-
-        /// <summary>
+        
         /// Sets the player's aim direction.
         /// Use this instead of setting AimDirection directly.
-        /// </summary>
+        
         public void SetAimDirection(Vector2 direction)
         {
             AimDirection = direction;
@@ -235,6 +234,11 @@ namespace PlayerController
         public void ChangeToDeathState()
         {
             _stateMachine.ChangeState(DeathState);
+        }
+        
+        public void ChangeToIdleState()
+        {
+            _stateMachine.ChangeState(IdleState);
         }
     }
 }

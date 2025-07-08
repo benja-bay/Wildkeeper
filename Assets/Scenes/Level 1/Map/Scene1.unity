@@ -289,11 +289,6 @@ MonoBehaviour:
   requiredKey: {fileID: 11400000, guid: 94883b0cac28cf04684eb48bab8514ce, type: 2}
   keyID: 11
   sceneAsset: {fileID: 102900000, guid: 9eec77f0792938646a7e1278069117b4, type: 3}
---- !u!4 &335241930 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3505053247013208531, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
-  m_PrefabInstance: {fileID: 8303893787154437269}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &367373612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,6 +379,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: Presiona Click Derecho para recoger bayas
+--- !u!114 &465864215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7744401149915276489, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
+  m_PrefabInstance: {fileID: 8303893787154437269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &472755952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,6 +475,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5617219896907721859, guid: ebdfc3a611f8be04494f5101c01a972a, type: 3}
   m_PrefabInstance: {fileID: 472755952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &478339550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7333886333762813836, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
+  m_PrefabInstance: {fileID: 8303893787154437269}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &627990419
 PrefabInstance:
@@ -3330,10 +3341,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: 14fb846ce8d568044998f75304bc9838, type: 2}
-  dialoguePanel: {fileID: 1313215734}
-  dialogueText: {fileID: 0}
-  nameText: {fileID: 0}
-  portraitImage: {fileID: 0}
+  dialogueText: {fileID: 1583580467}
+  nameText: {fileID: 1422939781}
+  dialoguePanel: {fileID: 478339550}
+  portraitImage: {fileID: 465864215}
 --- !u!1 &934188001
 GameObject:
   m_ObjectHideFlags: 0
@@ -7716,90 +7727,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1313215734
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1313215736}
-  - component: {fileID: 1313215735}
-  m_Layer: 5
-  m_Name: text_box
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!212 &1313215735
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313215734}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: 929ecdbc270493f4aa77db0f287d50df, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 9.6, y: 5.4}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1313215736
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313215734}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -134.00003, y: -11, z: 22.469997}
-  m_LocalScale: {x: 184.32213, y: 184.32213, z: 184.32213}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 335241930}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1390787909 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2305394163269790184, guid: 33c6126c235fe7749840f30b654bbea4, type: 3}
@@ -42150,6 +42077,17 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &1422939781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3460975871936205770, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
+  m_PrefabInstance: {fileID: 8303893787154437269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1443291827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47464,6 +47402,17 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &1583580467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6972359550338229557, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
+  m_PrefabInstance: {fileID: 8303893787154437269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1634728018
 GameObject:
   m_ObjectHideFlags: 0
@@ -49149,10 +49098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3505053247013208531, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1313215736}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc4530e0aae8c6469205bb70ca8a30e, type: 3}
 --- !u!1 &8303893787154437270 stripped
