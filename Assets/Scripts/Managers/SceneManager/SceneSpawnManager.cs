@@ -77,7 +77,7 @@ public class SceneSpawnManager : MonoBehaviour
     
     private System.Collections.IEnumerator WaitAndFinalizeRespawn()
     {
-        yield return null; // ← Espera un frame
+        yield return null;
 
         GameManager.Instance?.FinalizeRespawn();
     }

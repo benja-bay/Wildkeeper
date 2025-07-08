@@ -19,7 +19,7 @@ namespace PlayerController
             if (GameManager.Instance != null)
             {
                 _maxHealth = GameManager.Instance.maxHealth;
-                _currentHealth = GameManager.Instance.maxHealth; // ← siempre inicia con vida completa
+                _currentHealth = GameManager.Instance.maxHealth;
             }
         }
 
@@ -83,8 +83,7 @@ namespace PlayerController
         public override void Revive()
         {
             base.Revive();
-
-            // Podés agregar animaciones de revivir o reinicialización aquí
+            
             Debug.Log("Player has been revived from PlayerHealth.");
         }
     }
