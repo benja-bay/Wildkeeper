@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Managers;
 
 namespace Objects
 {
@@ -18,6 +19,7 @@ namespace Objects
 
         [Tooltip("Identificador único para guardar si ya fue usado")]
         [SerializeField] private string objectID;
+        public string ObjectID => objectID;
 
         [Header("Objetos a activar/desactivar")]
         [SerializeField] private List<GameObject> localObjects;

@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using Items;
+using Managers;
 using UnityEngine;
 
 namespace PlayerController
@@ -126,6 +127,11 @@ namespace PlayerController
         public void Clear()
         {
             _items.Clear();
+        }
+        
+        public Dictionary<ItemSO, int> CloneItemData()
+        {
+            return new Dictionary<ItemSO, int>(_items);
         }
         
     }

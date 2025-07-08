@@ -7,7 +7,7 @@ namespace Objects
     {
         [Header("Note data")]
         [SerializeField] private GameObject notePrefab;
-        
+
         public void Interact(PlayerController.Player player)
         {
             notePrefab?.SetActive(true);
@@ -19,5 +19,7 @@ namespace Objects
             notePrefab?.SetActive(false);
             Time.timeScale = 1;
         }
+
+        public string ObjectID => null;
     }
 }

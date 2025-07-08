@@ -6,6 +6,7 @@
 using Systems;
 using UnityEngine;
 using System.Collections;
+using Managers;
 
 namespace PlayerController
 {
@@ -18,7 +19,7 @@ namespace PlayerController
             if (GameManager.Instance != null)
             {
                 _maxHealth = GameManager.Instance.maxHealth;
-                _currentHealth = GameManager.Instance.maxHealth; // ← siempre inicia con vida completa
+                _currentHealth = GameManager.Instance.maxHealth;
             }
         }
 
@@ -48,19 +49,42 @@ namespace PlayerController
             if (TryGetComponent(out Player player))
             {
                 player.ChangeToDeathState();
+
+                // Esperamos y luego respawneamos
+                StartCoroutine(RespawnAfterDelay(2f));
+            }
+            
+            if (_currentHealth <= 0 && !GameManager.Instance.HasCheckpoint())
+            {
+                Debug.LogWarning("Player died with no checkpoint. Respawn disabled.");
+                return;
             }
 
             enabled = false;
-
-            StartCoroutine(RestartSceneAfterDelay(2f));
         }
 
-        private IEnumerator RestartSceneAfterDelay(float delay)
+        private IEnumerator RespawnAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(
-                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
-            );
+
+            if (GameManager.Instance.HasCheckpoint())
+            {
+                GameManager.Instance.RespawnPlayer();
+            }
+            else
+            {
+                // Si no hay checkpoint, reiniciamos escena
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+                );
+            }
+        }
+        
+        public override void Revive()
+        {
+            base.Revive();
+            
+            Debug.Log("Player has been revived from PlayerHealth.");
         }
     }
 }

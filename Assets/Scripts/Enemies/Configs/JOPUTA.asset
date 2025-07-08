@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de14f308e5836ba42b2a8ce4e9927758, type: 3}
+  m_Name: JOPUTA
+  m_EditorClassIdentifier: 
+  _name: Boss
+  _health: 400
+  _speed: 6
+  _damage: 40
+  _attackCooldown: 0.5
+  _attackDistance: 3
+  _attackType: 00000000
+  _startState: 0
+  _onVisionState: 01000000
+  _prefab: {fileID: 730200238648992963, guid: 7155f72aa30edca4b80b94e1c014cd18, type: 3}
+  _visionDistance: 20
+  _patrolWaitTime: 2
+  _projectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
+  _projectileSpeed: 5
+  _chargeSpeed: 10
+  _chargeDuration: 2
+  _chargeCooldown: 1

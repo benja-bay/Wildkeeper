@@ -19,6 +19,7 @@ public class DoorObject : MonoBehaviour, IInteractable
     public bool requiresKey = false;
     public ItemSO requiredKey; // Llave necesaria para abrir la puerta
     public string keyID = "";
+    
 
 #if UNITY_EDITOR
     public SceneAsset sceneAsset; // solo visible en el Editor
@@ -56,4 +57,5 @@ public class DoorObject : MonoBehaviour, IInteractable
         SceneSpawnManager.Instance.SetNextSpawnPoint(SelectedSpawnID);
         UnityEngine.SceneManagement.SceneManager.LoadScene(targetScene);
     }
+    public string ObjectID => null;
 }

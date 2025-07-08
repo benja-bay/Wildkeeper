@@ -113,5 +113,14 @@ namespace Systems
                     : $"{gameObject.name} no puede regenerar porque está muerto.");
             }
         }
+        
+        public virtual void Revive()
+        {
+            if (!Alive)
+            {
+                Alive = true;
+                Debug.Log($"{gameObject.name} has been revived.");
+            }
+        }
     }
 }

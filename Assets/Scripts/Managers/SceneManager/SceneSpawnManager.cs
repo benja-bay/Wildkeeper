@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Managers;
 
 public class SceneSpawnManager : MonoBehaviour
 {
@@ -61,13 +62,23 @@ public class SceneSpawnManager : MonoBehaviour
                     if (player != null)
                     {
                         player.transform.position = sp.transform.position;
+
+                        // Respawn final se maneja desde GameManager (si fue una muerte)
+                        Instance.StartCoroutine(WaitAndFinalizeRespawn());
                         return;
                     }
                 }
             }
 
             // Log a warning if no matching spawn point was found 
-            Debug.LogWarning($"No se encontró un SpawnPoint con ID '{nextSpawnPointID}' en la escena '{scene.name}'.");
+            Debug.LogWarning($"No se encontro un SpawnPoint con ID '{nextSpawnPointID}' en la escena '{scene.name}'.");
         }
+    }
+    
+    private System.Collections.IEnumerator WaitAndFinalizeRespawn()
+    {
+        yield return null;
+
+        GameManager.Instance?.FinalizeRespawn();
     }
 }

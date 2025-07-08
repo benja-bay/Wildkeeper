@@ -3,6 +3,7 @@
 // Interactable healing object that restores a percentage of player's health once
 // ==============================
 
+using Managers;
 using PlayerController;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace Objects
         [SerializeField] private string objectID;
         
         private SpriteRenderer _spriteRenderer; // Reference to the current SpriteRenderer
+        
+        public string ObjectID => objectID;
 
         private void Awake()
         {

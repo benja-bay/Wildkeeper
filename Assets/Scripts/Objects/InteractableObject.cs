@@ -20,5 +20,7 @@ namespace Objects
 
             Debug.Log($"Player {player.name} has interacted with the test object!");
         }
+        
+        public string ObjectID => null;
     }
 }
