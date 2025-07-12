@@ -124389,10 +124389,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3898893744150321906, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_text
-      value: "I think I\u2019m starting to hallucinate. I see Yarar\xE1s with fists
-        on their tails\u2026 or are they Falsa Yarar\xE1s? Either way, strange things
-        are happening here. I'm going further into the reserve to figure out what's
-        going on."
+      value: "Creo que estoy empezando a alucinar. Veo Yarar\xE1s con pu\xF1os en
+        la cola \xBFO son Falsas Yarar\xE1? Como sea, est\xE1n sucediendo cosas extra\xF1as
+        aqu\xED. Voy a adentrarme m\xE1s en la reserva a ver qu\xE9 sucede aqu\xED.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 4304219049063997689, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_Name

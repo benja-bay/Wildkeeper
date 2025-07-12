@@ -2349,12 +2349,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3898893744150321906, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_text
-      value: "I've been working in this reserve for weeks and I've started noticing
-        strange things:\nMy coworkers have been disappearing one by one, along with
-        some tourists. New rangers come in and vanish after a few days. I have my
-        suspicions, but I'm not sure yet. I need to go deeper into the reserve and
-        investigate. I know there are more cabins out there\u2014maybe I can find
-        some answers\u2026"
+      value: "Llevo semanas trabajando en esta reserva y he comenzado a notar cosas
+        extra\xF1as:\r\nMis compa\xF1eros han ido desapareciendo poco a poco, al
+        igual que algunos turistas. Guardias nuevos han entrado y a los d\xEDas han
+        desaparecido. Tengo sospechas, pero no estoy seguro. Necesito adentrarme
+        en la reserva e investigar. S\xE9 que hay m\xE1s caba\xF1as all\xED, quiz\xE1
+        logre encontrar informaci\xF3n\u2026\r"
       objectReference: {fileID: 0}
     - target: {fileID: 4304219049063997689, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_Name

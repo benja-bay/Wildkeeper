@@ -288,8 +288,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3898893744150321906, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_text
-      value: This place is cursed. Mutants chase me wherever I go. I feel lost. I
-        feel scared. Where the hell did that giant mosquito come from?
+      value: "Este lugar est\xE1 maldito. Mutantes me persiguen a dondequiera que
+        vaya. Me siento perdido. Me siento asustado \xBFDe d\xF3nde demonios sali\xF3
+        ese mosquito gigante?\r"
       objectReference: {fileID: 0}
     - target: {fileID: 4304219049063997689, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_Name

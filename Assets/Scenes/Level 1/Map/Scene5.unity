@@ -54398,9 +54398,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3898893744150321906, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_text
-      value: "I'm surrounded. There's no way out. I tried hiding here, but I know
-        they\u2019ll find me. I saw some kind of strange scientist entering the collapsed
-        cave. God, I can hear the mutants nearby\u2014they\u2019re coming\u2026"
+      value: "Estoy rodeado. No tengo forma de escapar. Intent\xE9 esconderme aqu\xED
+        pero s\xE9 que me encontrar\xE1n. Vi a una especie de cient\xEDfico extra\xF1o
+        entrando a la cueva derrumbada. Dios, escucho a los mutantes cerca, ya vienen\u2026\r"
       objectReference: {fileID: 0}
     - target: {fileID: 4304219049063997689, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_Name

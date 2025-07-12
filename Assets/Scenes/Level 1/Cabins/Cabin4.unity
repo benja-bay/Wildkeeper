@@ -1721,12 +1721,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3898893744150321906, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_text
-      value: "Experimental Report No. 186\n\nThe specimen has been successfully completed.
-        The amalgam of Hippocamelus bisulcus (Huemul), Coendou spp (Coendou), and
-        Myrmecophaga tridactyla (Giant anteater) has given birth to a hybrid creature
-        whose anatomy and potential exceed all prior expectations. Its composition
-        makes it virtually unstoppable. A perfect aberration\u2026 worthy of my collection.
-        It will be archived alongside the others, awaiting its final purpose."
+      value: "Informe Experimental N.\xBA 186\r\n\nEl esp\xE9cimen ha sido completado
+        con \xE9xito. La amalgama entre Hippocamelus bisulcus (Huemul), Coendou spp
+        (Coend\xFA). y Myrmecophaga tridactyla (Oso hormiguero) ha dado origen a
+        una criatura h\xEDbrida cuya anatom\xEDa y potencial superan toda expectativa
+        previa. Su constituci\xF3n la vuelve pr\xE1cticamente imparable. Una aberraci\xF3n
+        perfecta\u2026 digna de mi colecci\xF3n. Ser\xE1 archivada junto a los dem\xE1s,
+        a la espera de su prop\xF3sito final."
       objectReference: {fileID: 0}
     - target: {fileID: 3898893744150321906, guid: ba3fadd0e56047649bee962ccff586dd, type: 3}
       propertyPath: m_fontSizeBase
