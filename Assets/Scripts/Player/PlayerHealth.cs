@@ -49,9 +49,8 @@ namespace PlayerController
             if (TryGetComponent(out Player player))
             {
                 player.ChangeToDeathState();
-
-                // Esperamos y luego respawneamos
-                StartCoroutine(RespawnAfterDelay(2f));
+                
+                StartCoroutine(RespawnAfterDelay(1f));
             }
             
             if (_currentHealth <= 0 && !GameManager.Instance.HasCheckpoint())
@@ -85,6 +84,11 @@ namespace PlayerController
             base.Revive();
             
             Debug.Log("Player has been revived from PlayerHealth.");
+        }
+        
+        public void SetCurrentHealth(int value)
+        {
+            _currentHealth = Mathf.Clamp(value, 0, _maxHealth);
         }
     }
 }

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Items;
-using UnityEngine;
+using Objects;
 using PlayerController;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using Objects; // ← para acceder a IInteractable
 
 namespace Managers
 {
@@ -26,7 +26,7 @@ namespace Managers
         private Dictionary<ItemSO, int> savedInventory = new();
         private int savedHealth = 0;
         private HashSet<string> savedUsedObjectIDs = new();
-        
+
         private bool isRespawning = false;
 
         private void Awake()
@@ -107,7 +107,7 @@ namespace Managers
         {
             if (!HasCheckpoint()) return;
 
-            isRespawning = true; // ← importante
+            isRespawning = true;
 
             SceneSpawnManager.Instance?.SetNextSpawnPoint(currentCheckpointID);
             SceneManager.LoadScene(savedCheckpointScene);
@@ -141,8 +141,8 @@ namespace Managers
             if (!HasCheckpoint()) return;
 
             var health = player.GetComponent<PlayerHealth>();
-            health.SetMaxHealth(savedHealth > 0 ? savedHealth : maxHealth);
-            health.Regenerate(savedHealth > 0 ? savedHealth : maxHealth);
+            
+            health.SetCurrentHealth(savedHealth > 0 ? savedHealth : maxHealth);
 
             player.Inventory.Clear();
 
@@ -164,7 +164,6 @@ namespace Managers
         // === Restaura objetos interactuables que NO fueron usados al momento del checkpoint ===
         private void RestoreInteractables()
         {
-            // Buscar todos los MonoBehaviours activos e inactivos
             MonoBehaviour[] allBehaviours = GameObject.FindObjectsOfType<MonoBehaviour>(true);
 
             foreach (var mb in allBehaviours)
@@ -172,11 +171,11 @@ namespace Managers
                 if (mb is IInteractable interactable)
                 {
                     string objID = interactable.ObjectID;
-                    if (string.IsNullOrEmpty(objID)) continue; // No persistente → ignorar
+                    if (string.IsNullOrEmpty(objID)) continue;
 
                     if (!savedUsedObjectIDs.Contains(objID))
                     {
-                        mb.gameObject.SetActive(true); // Restaurar si no fue usado al guardar
+                        mb.gameObject.SetActive(true);
                     }
                 }
             }
