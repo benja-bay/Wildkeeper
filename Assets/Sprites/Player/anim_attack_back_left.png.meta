@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d83da298902458242bd8ef79c7dba79a
+guid: 213afa934276f314ea809c9f3becb66a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: anim_attack_back_left_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 42
+        height: 58
+      alignment: 9
+      pivot: {x: 0.6963045, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f502381c45f454a9623516bd0ea506
+      internalID: -1761888463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attack_back_left_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 0
+        width: 50
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5788632, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8817e094cdc3fd49ac1bb0c54f59de0
+      internalID: 827426661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attack_back_left_2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0
+        width: 52
+        height: 55
+      alignment: 9
+      pivot: {x: 0.7343838, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143ac0521b10f6244b9494f3d4f8fb70
+      internalID: -1254678315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_attack_back_left_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 0
+        width: 27
+        height: 55
+      alignment: 9
+      pivot: {x: 0.4778578, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 924e8cd09da80404b855bd9030405554
+      internalID: 998796776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +190,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      anim_attack_back_left_0: -1761888463
+      anim_attack_back_left_1: 827426661
+      anim_attack_back_left_2: -1254678315
+      anim_attack_back_left_3: 998796776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
