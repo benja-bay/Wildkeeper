@@ -157,6 +157,8 @@ namespace Managers
             {
                 Debug.LogWarning("RestoreCheckpoint: saved inventory is empty.");
             }
+            
+            _usedObjectIDs = new HashSet<string>(savedUsedObjectIDs);
 
             Debug.Log($"Restored to checkpoint '{currentCheckpointID}' in scene '{savedCheckpointScene}'");
         }
@@ -175,6 +177,7 @@ namespace Managers
 
                     if (!savedUsedObjectIDs.Contains(objID))
                     {
+                        mb.gameObject.SetActive(false);
                         mb.gameObject.SetActive(true);
                     }
                 }
