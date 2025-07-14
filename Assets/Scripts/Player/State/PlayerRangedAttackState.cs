@@ -51,9 +51,6 @@ namespace PlayerController.State
             // Fire if weapon is ready
             if (_weapon.CanShoot())
                 _weapon.Shoot();
-
-            // Consume ammo after shot
-            Player.Inventory.ConsumeAmmo(Player.DartItem);
         }
 
         // Called every frame to handle aiming updates and input
@@ -86,7 +83,6 @@ namespace PlayerController.State
             if (Player.inputHandler.attackPressed && _weapon.CanShoot())
             {
                 _weapon.Shoot();
-                Player.Inventory.ConsumeAmmo(Player.DartItem);
             }
 
             // If attack button is released, transition to movement or idle state
