@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   _name: Boss
-  _health: 400
+  _health: 200
   _speed: 6
   _damage: 30
   _attackCooldown: 1
