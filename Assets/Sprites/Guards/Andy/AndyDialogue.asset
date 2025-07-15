@@ -15,16 +15,17 @@ MonoBehaviour:
   npcName: Andy
   npcPortrait: {fileID: 21300000, guid: a3c564ac55cbef843b6ba044b04b37f9, type: 3}
   dialogueLines:
-  - Well I hope you had a good first day Agus!
-  - Oh and before I forget, you should get your baton before I go, it is on the cabin
-    at the end of the path
-  - It's for authotized personnel only so grab my key, It's here on the desk inside
-    my cabin
-  - And tomorrow we'll learn how to use the tranquilizer gun, in the meantime it's
-    going to be on Morena's cabin.
-  - "Now go get your baton so we can go home, it\xB4s getting late already."
-  typingSpeed: 0.05
+  - Bueno, espero  que  hayas  tenido  un  buen  primer  dia  Agus!
+  - "Oh  y  antes  de  que  me  olvide,  deber\xEDas  buscar  tu  cachiporra  antes 
+    de  que  me  vaya,  est\xE1  en  la  caba\xF1a  al  final  del  camino"
+  - "Es  solo  para  personal  autorizado  asique  agarra  mi  llave,  est\xE1  en 
+    el  escritorio  adentro  de  mi  caba\xF1a"
+  - "Y  ma\xF1ana  aprender\xE1s  a  usar  el  arma  tranquilizante,  por  ahora 
+    se  quedar\xE1  resguardada  en  la  caba\xF1a  de  Morena."
+  - "Ahora  ve  a  buscar  tu  cachiporra  asi  podemos  ir  a  casa,  ya  se  est\xE1 
+    haciendo  tarde."
+  typingSpeed: 0.01
   voiceSound: {fileID: 0}
   voicePitch: 1
-  autoProgressLines: 0100000000
-  autoProgressDelay: 2
+  autoProgressLines: 0000000000
+  autoProgressDelay: 0
