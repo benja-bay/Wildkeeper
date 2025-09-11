@@ -15,6 +15,7 @@ namespace Items
         public ItemEffectType effectType; // Determines how the item behaves
         public int value; // used for, healing amount
         public int maxAmount = 1; // Maximum quantity allowed in inventory
+        public string keyID;
 
         // === Types of Effects Items Can Have ===
         public enum ItemEffectType
@@ -22,7 +23,8 @@ namespace Items
             KHeal,
             KAmmo,
             KUnlockMelee,
-            KUnlockRanged
+            KUnlockRanged,
+            KKey
         }
     }
 }

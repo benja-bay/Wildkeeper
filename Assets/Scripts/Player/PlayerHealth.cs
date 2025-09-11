@@ -5,79 +5,90 @@
 
 using Systems;
 using UnityEngine;
+using System.Collections;
+using Managers;
 
-namespace Player
+namespace PlayerController
 {
     public class PlayerHealth : Health
     {
-        // === Visual Feedback Configuration ===
-        [Header("Flash settings")]
-        [SerializeField] private SpriteRenderer spriteRenderer; // Reference to player's sprite
-        [SerializeField] private Color damageColor = Color.red; // Color when taking damage
-        [SerializeField] private float flashDuration = 0.1f; // Duration of damage flash
+        protected override void Start()
+        {
+            base.Start();
 
-        [SerializeField] private Color healColor = Color.green;   // Color when healing
-        [SerializeField] private float healDuration = 0.3f;       // Duration of heal flash
+            if (GameManager.Instance != null)
+            {
+                _maxHealth = GameManager.Instance.maxHealth;
+                _currentHealth = GameManager.Instance.maxHealth;
+            }
+        }
 
-        private Color _originalColor; // Original sprite color (restored after flash)
-
-        // Called when player is healed through an item or effect
         public void Regenerate(int amount)
         {
             Heal(amount);
-            StartCoroutine(FlashGreen());
+            FlashHeal();
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.currentHealth = _currentHealth;
         }
 
-        // Called when player takes damage (includes visual feedback)
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount);
-            StartCoroutine(FlashRed());
+            FlashDamage();
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.currentHealth = _currentHealth;
         }
 
-        // Coroutine to flash red briefly when damaged
-        private System.Collections.IEnumerator FlashRed()
-        {
-            spriteRenderer.color = damageColor;
-            yield return new WaitForSeconds(flashDuration);
-            spriteRenderer.color = _originalColor;
-        }
-
-        // Coroutine to flash green briefly when healed
-        private System.Collections.IEnumerator FlashGreen()
-        {
-            spriteRenderer.color = healColor;
-            yield return new WaitForSeconds(healDuration);
-            spriteRenderer.color = _originalColor;
-        }
-
-        // Called when player health reaches 0
         public override void Die()
         {
             base.Die();
-            // TODO: Add additional logic like death animation or game restart
+            Debug.Log("¡El jugador ha muerto!");
+
+            if (TryGetComponent(out Player player))
+            {
+                player.ChangeToDeathState();
+                
+                StartCoroutine(RespawnAfterDelay(1f));
+            }
+            
+            if (_currentHealth <= 0 && !GameManager.Instance.HasCheckpoint())
+            {
+                Debug.LogWarning("Player died with no checkpoint. Respawn disabled.");
+                return;
+            }
+
+            enabled = false;
         }
 
-        // Setup initial color reference
-        private void Start()
+        private IEnumerator RespawnAfterDelay(float delay)
         {
-            if (spriteRenderer == null)
-                spriteRenderer = GetComponent<SpriteRenderer>();
+            yield return new WaitForSeconds(delay);
 
-            _originalColor = spriteRenderer.color;
+            if (GameManager.Instance.HasCheckpoint())
+            {
+                GameManager.Instance.RespawnPlayer();
+            }
+            else
+            {
+                // Si no hay checkpoint, reiniciamos escena
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+                );
+            }
         }
-
-        // Update HUD with current health every frame
-        private void Update()
+        
+        public override void Revive()
         {
-            HudHealth();
+            base.Revive();
+            
+            Debug.Log("Player has been revived from PlayerHealth.");
         }
-
-        //#TEST
-        // Sends current health to GameManager to update HUD
-        private void HudHealth()
+        
+        public void SetCurrentHealth(int value)
         {
-            GameManager.Instance.ShowHealth(_currentHealth);
+            _currentHealth = Mathf.Clamp(value, 0, _maxHealth);
         }
     }
 }

@@ -14,6 +14,9 @@ TagManager:
   - Water
   - UI
   - World
+  - Deco
+  - Ground
+  - Enemies
   - 
   - 
   - 
@@ -35,13 +38,13 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - MiniMapIcons
   m_SortingLayers:
   - name: Ground
     uniqueID: 1261194627
+    locked: 0
+  - name: Deco
+    uniqueID: 1668177663
     locked: 0
   - name: Collision
     uniqueID: 2836706343

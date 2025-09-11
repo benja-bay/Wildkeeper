@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75462cce75a2cb447993c08524d5ee6c, type: 3}
+  m_Name: AndyDialogue
+  m_EditorClassIdentifier: 
+  npcName: Andy
+  npcPortrait: {fileID: 21300000, guid: a3c564ac55cbef843b6ba044b04b37f9, type: 3}
+  dialogueLines:
+  - Bueno, espero  que  hayas  tenido  un  buen  primer  dia  Agus!
+  - "Oh  y  antes  de  que  me  olvide,  deber\xEDas  buscar  tu  cachiporra  antes 
+    de  que  me  vaya,  est\xE1  en  la  caba\xF1a  al  final  del  camino"
+  - "Es  solo  para  personal  autorizado  asique  agarra  mi  llave,  est\xE1  en 
+    el  escritorio  adentro  de  mi  caba\xF1a"
+  - "Y  ma\xF1ana  aprender\xE1s  a  usar  el  arma  tranquilizante,  por  ahora 
+    se  quedar\xE1  resguardada  en  la  caba\xF1a  de  Morena."
+  - "Ahora  ve  a  buscar  tu  cachiporra  asi  podemos  ir  a  casa,  ya  se  est\xE1 
+    haciendo  tarde."
+  typingSpeed: 0.01
+  voiceSound: {fileID: 0}
+  voicePitch: 1
+  autoProgressLines: 0000000000
+  autoProgressDelay: 0

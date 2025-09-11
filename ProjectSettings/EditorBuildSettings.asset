@@ -6,6 +6,48 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Items scene.unity
-    guid: b9c9802d97fd70342bb752d098709f60
+    path: Assets/Scenes/Menu/MainMenu.unity
+    guid: b2559a900109f494ab1e36b86a309124
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene1.unity
+    guid: 3c4facd6b41ec7945930d5850d3ce2c8
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene2.unity
+    guid: 659ffb14cad9b1c4abbf0339ed42df1c
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene3.unity
+    guid: a8ab21223c6cab447bb21975ca3fa9a1
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene4.unity
+    guid: 8e274de1e5d13604c9797c744fcd569b
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene5.unity
+    guid: b5e584b6aba579e4b8ef8510334a981a
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene6.unity
+    guid: ebaee73a2082ff34eb36adc197a358d2
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Map/Scene7.unity
+    guid: c9f2899c9a60af142b76cf2140fb1bbc
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Cabins/Cabin1.unity
+    guid: 55e1761522daf3a45a573d722c00260e
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Cabins/Cabin2.unity
+    guid: 9eec77f0792938646a7e1278069117b4
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Cabins/Cabin3.unity
+    guid: 7632129422bcf37479837ddc784c8b73
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Cabins/Cabin4.unity
+    guid: e4273e33e372b8247bcac9f33e182729
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Cabins/Cabin5.unity
+    guid: 8ab809b0ca77f0e4cae8d2134b6e2add
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Boss Zone/BossZone.unity
+    guid: 2ea6cf0679abf044a937deb6f6509872
+  - enabled: 1
+    path: Assets/Scenes/Menu/GameOver.unity
+    guid: b8b508dbc7be90f408e714f9ac783154
   m_configObjects: {}

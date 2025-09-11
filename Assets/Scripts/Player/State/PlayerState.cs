@@ -3,7 +3,7 @@
 // Abstract base class for all player states in the state machine pattern
 // ==============================
 
-namespace Player.State
+namespace PlayerController.State
 {
     public abstract class PlayerState
     {

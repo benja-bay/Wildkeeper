@@ -9,10 +9,10 @@ public class BulletScript : MonoBehaviour
 {
     [Header("Lifetime & Speed")]
     [SerializeField] private float _lifeTime = 3f; // Time before the bullet is destroyed automatically
-    [SerializeField] private float _bulletSpeed = 10f; // Speed of the bullet
+    [SerializeField] private float _bulletSpeed = 20f; // Speed of the bullet
 
     [Header("Damage")]
-    [SerializeField] private int _damage = 20; // Damage dealt to enemies on impact
+    [SerializeField] private int _damage = 40; // Damage dealt to enemies on impact
     private void Start()
     {
         // Automatically destroy the bullet after a set lifetime

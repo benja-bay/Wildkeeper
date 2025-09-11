@@ -5,17 +5,18 @@
 
 using System.Collections.Generic;
 using Items;
+using Managers;
 using UnityEngine;
 
-namespace Player
+namespace PlayerController
 {
     public class Inventory
     {
         // === Stored Items ===
-        private Dictionary<ItemSO, int> _items = new(); // Stores each item and its quantity
+        public Dictionary<ItemSO, int> _items = new(); // Stores each item and its quantity
 
         // Adds item to inventory, capping at its max allowed amount
-        public void AddItem(ItemSO item, int quantity = 1)
+        public void AddItem(ItemSO item, int quantity = 1, bool syncWithGameManager = true)
         {
             if (_items.ContainsKey(item))
             {
@@ -27,6 +28,11 @@ namespace Player
             }
 
             Debug.Log($"Now you have {_items[item]}x {item.itemName}");
+
+            if (syncWithGameManager && GameManager.Instance != null)
+            {
+                GameManager.Instance.AddItem(item, quantity);
+            }
         }
 
         // Uses an item and applies its effect to the player
@@ -36,6 +42,14 @@ namespace Player
                 return false;
 
             _items[item]--;
+            
+            if (GameManager.Instance != null)
+            {
+                if (GameManager.Instance.inventory.ContainsKey(item))
+                {
+                    GameManager.Instance.inventory[item] = _items[item];
+                }
+            }
 
             switch (item.effectType)
             {
@@ -83,6 +97,12 @@ namespace Player
                 return false;
 
             _items[ammoItem]--;
+
+            if (GameManager.Instance != null && GameManager.Instance.inventory.ContainsKey(ammoItem))
+            {
+                GameManager.Instance.inventory[ammoItem] = _items[ammoItem];
+            }
+
             return true;
         }
 
@@ -91,5 +111,28 @@ namespace Player
         {
             return _items.TryGetValue(ammoItem, out int count) && count > 0;
         }
+        
+        public bool HasKey(string keyID)
+        {
+            foreach (var item in _items.Keys)
+            {
+                if (!string.IsNullOrEmpty(item.keyID) && item.keyID == keyID && _items[item] > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        public void Clear()
+        {
+            _items.Clear();
+        }
+        
+        public Dictionary<ItemSO, int> CloneItemData()
+        {
+            return new Dictionary<ItemSO, int>(_items);
+        }
+        
     }
 }

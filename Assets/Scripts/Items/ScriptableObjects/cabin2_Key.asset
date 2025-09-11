@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbe5bbe0c170374db917c00f8075d0b, type: 3}
+  m_Name: cabin2_Key
+  m_EditorClassIdentifier: 
+  itemName: Llave de Cabina 2
+  icon: {fileID: 0}
+  description: "Llave para abrir la caba\xF1a 2"
+  effectType: 4
+  value: 0
+  maxAmount: 1
+  keyID: cabin2_key

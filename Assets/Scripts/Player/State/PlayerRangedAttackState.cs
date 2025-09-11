@@ -6,7 +6,7 @@
 using UnityEngine;
 using Weapons;
 
-namespace Player.State
+namespace PlayerController.State
 {
     public class PlayerRangedAttackState : PlayerState
     {
@@ -51,15 +51,29 @@ namespace Player.State
             // Fire if weapon is ready
             if (_weapon.CanShoot())
                 _weapon.Shoot();
-
-            // Consume ammo after shot
-            Player.Inventory.ConsumeAmmo(Player.DartItem);
         }
 
-        // Called every frame to handle aiming updates
+        // Called every frame to handle aiming updates and input
         public override void HandleInput()
         {
+            base.HandleInput();
+
+            // Update aiming direction
             _aim.UpdatePositionAndRotation();
+
+            // Allow cancelling with Use Item input
+            if (Player.inputHandler.useItemPressed)
+            {
+                StateMachine.ChangeState(Player.UseItemState);
+                return;
+            }
+
+            // Allow cancelling with Interact input
+            if (Player.inputHandler.interactPressed)
+            {
+                StateMachine.ChangeState(Player.InteractState);
+                return;
+            }
         }
 
         // Called every frame to manage shooting and transitions
@@ -69,7 +83,6 @@ namespace Player.State
             if (Player.inputHandler.attackPressed && _weapon.CanShoot())
             {
                 _weapon.Shoot();
-                Player.Inventory.ConsumeAmmo(Player.DartItem);
             }
 
             // If attack button is released, transition to movement or idle state

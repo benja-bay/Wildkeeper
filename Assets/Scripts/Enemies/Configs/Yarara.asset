@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de14f308e5836ba42b2a8ce4e9927758, type: 3}
+  m_Name: Yarara
+  m_EditorClassIdentifier: 
+  _name: Yarara
+  _health: 100
+  _speed: 5
+  _damage: 20
+  _attackCooldown: 1.5
+  _attackDistance: 4
+  _attackType: 00000000
+  _startState: 0
+  _onVisionState: 01000000
+  _prefab: {fileID: 2039325003126953774, guid: 8c2e7c5e15a5cf24c8c8f454153f6785, type: 3}
+  _visionDistance: 8
+  _patrolWaitTime: 0.5
+  _projectilePrefab: {fileID: 2039325003126953774, guid: 8c2e7c5e15a5cf24c8c8f454153f6785, type: 3}
+  _projectileSpeed: 0
+  _chargeSpeed: 0
+  _chargeDuration: 0
+  _chargeCooldown: 0

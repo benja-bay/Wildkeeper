@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de14f308e5836ba42b2a8ce4e9927758, type: 3}
+  m_Name: Mosquito
+  m_EditorClassIdentifier: 
+  _name: Mosquito
+  _health: 60
+  _speed: 3
+  _damage: 10
+  _attackCooldown: 0.5
+  _attackDistance: 9
+  _attackType: 01000000
+  _startState: 0
+  _onVisionState: 02000000
+  _prefab: {fileID: 4917273793354472290, guid: 68e74f0060ca0e741b704005f30ad903, type: 3}
+  _visionDistance: 4
+  _patrolWaitTime: 2
+  _projectilePrefab: {fileID: 9208128015413433642, guid: 87fdb55ab56116a489e1342931304cdb, type: 3}
+  _projectileSpeed: 20
+  _chargeSpeed: 0
+  _chargeDuration: 0
+  _chargeCooldown: 0
